@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cloud.hexiaolei.webaiproject.Mapper.DeptMapper">
+    <select id="findAll" resultType="cloud.hexiaolei.webaiproject.pojo.Dept">
+        select id, name, create_time, update_time from dept order by update_time desc;
+    </select>
+
+    <delete id="deleteDeptById">
+        delete from dept where id = #{id}
+    </delete>
+
+    <insert id="insertDept" parameterType="cloud.hexiaolei.webaiproject.pojo.Dept">
+        insert into dept(name, create_time, update_time) values (#{name}, #{createTime}, #{updateTime});
+    </insert>
+
+    <select id="findDeptById" resultType="cloud.hexiaolei.webaiproject.pojo.Dept">
+        select id, name, create_time, update_time from dept where id = #{id};
+    </select>
+    <update id="updateDeptById">
+        update dept set name = #{name}, update_time = #{updateTime} where id = #{id};
+    </update>
+</mapper>
