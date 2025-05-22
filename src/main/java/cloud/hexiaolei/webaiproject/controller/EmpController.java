@@ -37,6 +37,7 @@ public class EmpController {
         log.info("参数{}",empQueryParam);
         PageResult<Emp> pageResult = empService.queryPages(empQueryParam);
         return Result.success(pageResult);
+        //
     }
     @PostMapping
     public Result save(@RequestBody Emp emp){
