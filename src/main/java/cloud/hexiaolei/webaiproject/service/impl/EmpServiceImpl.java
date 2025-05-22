@@ -61,8 +61,11 @@ public PageResult<Emp> queryPages(EmpQueryParam empQueryParam) {
         //2.添加用户
         empMapper.insertUser(emp);
         //3.工作经历添加(可没有)
-        if (!CollectionUtils.isEmpty(emp.getExprList())){
-            empExprMapper.insertEmpExpr(emp.getExprList());
+        List<EmpExpr> exprList = emp.getExprList();
+        if (!CollectionUtils.isEmpty(exprList)){
+            //遍历集合，给员工经历中的deptId赋值
+            exprList.forEach(empExpr -> empExpr.setEmpId(emp.getId()));
+            empExprMapper.insertEmpExpr(exprList);
         }
     }
 
