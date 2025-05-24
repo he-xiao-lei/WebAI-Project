@@ -12,6 +12,8 @@ mybatis:
     # 驼峰命名映射
     map-underscore-to-camel-case: true
 
-
-
+#配置日志信息，查看spring事务管理的日志，现在可以看到debug的日志
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
 

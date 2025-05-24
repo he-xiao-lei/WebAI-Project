@@ -26,31 +26,32 @@ public class DeptController {
         List<Dept> all = deptService.findAll();
         return Result.success(all);
     }
+
     @DeleteMapping
-    public Result deleteUserById(@RequestParam(value = "id") Integer id){
-        log.warn("根据id:{}删除部门",id);
+    public Result deleteUserById(@RequestParam(value = "id") Integer id) {
+        log.warn("根据id:{}删除部门", id);
         deptService.deleteUserById(id);
         return Result.success();
     }
     @PostMapping
-    public Result insertUser(@RequestBody Dept dept){
+    public Result insertUser(@RequestBody Dept dept) {
 //        System.out.println("新增部门"+dept);
-        log.warn("新增部门:{}",dept.getName());
+        log.warn("新增部门:{}", dept.getName());
         deptService.insertUser(dept);
         return Result.success();
     }
 
     @GetMapping("/{id}")
-    public Result findUserById(@PathVariable(value = "id") Integer id){
+    public Result findUserById(@PathVariable(value = "id") Integer id) {
 //        System.out.println("根据部门id查询部门");
-        log.warn("根据部门id:{}查询",id);
+        log.warn("根据部门id:{}查询", id);
         Dept dept = deptService.findUserById(id);
         return Result.success(dept);
     }
 
     @PutMapping
-    public Result updateUserById(@RequestBody Dept dept){
-        log.warn("修改部门:{}",dept);
+    public Result updateUserById(@RequestBody Dept dept) {
+        log.warn("修改部门:{}", dept);
         deptService.updateUser(dept);
         return Result.success();
     }
