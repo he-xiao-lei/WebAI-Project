@@ -5,28 +5,32 @@
 <mapper namespace="cloud.hexiaolei.webaiproject.Mapper.EmpMapper">
 
     <!--    原始方式-->
-<!--    <select id="queryPages" resultType="cloud.hexiaolei.webaiproject.pojo.Emp">-->
-<!--        select e.*,d.name deptName from emp e left join dept d on e.dept_id = d.id order by e.update_time limit #{start},#{pageSize};-->
-<!--    </select>-->
+    <!--    <select id="queryPages" resultType="cloud.hexiaolei.webaiproject.pojo.Emp">-->
+    <!--        select e.*,d.name deptName from emp e left join dept d on e.dept_id = d.id order by e.update_time limit #{start},#{pageSize};-->
+    <!--    </select>-->
     <select id="queryPages" resultType="cloud.hexiaolei.webaiproject.pojo.Emp">
 
         select e.*,d.name deptName from emp e left join dept d on e.dept_id = d.id
+        # 动态sql配置,where标签用来设置and条件是否添加到最后的sql里面,if也是判断如果有这个参数就添加到最后的sql里面
         <where>
             <if test="name != null and name != ''">
-                    e.name like concat('%',#{name},'%')
+                e.name like concat('%',#{name},'%')
             </if>
             <if test="gender != null">
-                     and gender = #{gender}
+                and gender = #{gender}
             </if>
             <if test="begin != null and end != null">
-                    and entry_date between #{begin} and #{end}
+                and entry_date between #{begin} and #{end}
             </if>
         </where>
-            order by e.update_time desc
+        order by e.update_time desc
     </select>
+    <!--    //主键返回-->
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
-        insert into emp(username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time, update_time)
-            values(#{username},#{name},#{gender},#{phone},#{job},#{salary},#{image},#{entryDate},#{deptId},#{createTime},#{updateTime})
+        insert into emp(username, name, gender, phone, job, salary, image, entry_date, dept_id, create_time,
+                        update_time)
+        values (#{username}, #{name}, #{gender}, #{phone}, #{job}, #{salary}, #{image}, #{entryDate}, #{deptId},
+                #{createTime}, #{updateTime})
     </insert>
-   
+
 </mapper>

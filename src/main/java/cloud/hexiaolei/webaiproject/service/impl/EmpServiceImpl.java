@@ -63,7 +63,7 @@ public PageResult<Emp> queryPages(EmpQueryParam empQueryParam) {
             //2.添加用户
             empMapper.insertUser(emp);
 
-        int i = 1/0;
+//        int i = 1/0;
             //在这边手动的构建一个异常，让程序执行到这里就会抛出异常，但是上面的已经执行了，下面的没有执行，所以现在就是需要一个解决方法，解决插入不对等的情况
             //业务操作不一致
             //3.工作经历添加,因为有可能是因为是实习生工作

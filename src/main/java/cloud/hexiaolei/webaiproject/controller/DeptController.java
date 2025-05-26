@@ -8,20 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/depts")
 public class DeptController {
     private final DeptService deptService;
+
     @Autowired
-    public DeptController(DeptService deptService){
+    public DeptController(DeptService deptService) {
         this.deptService = deptService;
     }
 
     //@RequestMapping(value = "/depts",method = RequestMethod.GET)//指定请求方式
 //    可以直接使用@GetMapping注解
     @GetMapping
-    public Result getDept(){
+    public Result getDept() {
         log.warn("查询所有记录");
         List<Dept> all = deptService.findAll();
         return Result.success(all);
@@ -33,6 +35,7 @@ public class DeptController {
         deptService.deleteUserById(id);
         return Result.success();
     }
+
     @PostMapping
     public Result insertUser(@RequestBody Dept dept) {
 //        System.out.println("新增部门"+dept);
@@ -55,7 +58,6 @@ public class DeptController {
         deptService.updateUser(dept);
         return Result.success();
     }
-
 
 
 }
