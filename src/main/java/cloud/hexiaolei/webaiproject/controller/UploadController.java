@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
+import java.util.Objects;
 
 @Slf4j
 @RestController
 public class UploadController {
     private AliyunOSSOperator aliyunOSSOperator;
+
     @Autowired
     public UploadController(AliyunOSSOperator aliyunOSSOperator){
         this.aliyunOSSOperator = aliyunOSSOperator;
@@ -44,7 +43,7 @@ public class UploadController {
     @PostMapping("/upload")
     public Result upload(@RequestParam(value = "file")MultipartFile multipartFile) throws Exception {
         log.info("插入文件{}",multipartFile.getOriginalFilename());
-        String url = aliyunOSSOperator.upload(multipartFile.getBytes(), multipartFile.getOriginalFilename());
+        String url = aliyunOSSOperator.upload(multipartFile.getBytes(), Objects.requireNonNull(multipartFile.getOriginalFilename()));
         log.info("文件上传至OSS，路径为:{}",url);
         return Result.success(url);
     }
