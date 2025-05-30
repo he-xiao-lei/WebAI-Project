@@ -1,10 +1,8 @@
 package cloud.hexiaolei.webaiproject.Mapper;
 import cloud.hexiaolei.webaiproject.pojo.Emp;
-import cloud.hexiaolei.webaiproject.pojo.EmpExpr;
 import cloud.hexiaolei.webaiproject.pojo.EmpQueryParam;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -21,4 +19,6 @@ public interface EmpMapper {
          * @param emp
          */
         void insertUser(Emp emp);
+
+        void deleteUserById(List<Integer> ids);
 }

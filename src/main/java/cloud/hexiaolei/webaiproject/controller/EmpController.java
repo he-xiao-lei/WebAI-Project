@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 @Slf4j
 @RestController //员工管理controller
@@ -46,5 +49,39 @@ public class EmpController {
         empService.insertUser(emp);
         //2.保存员工工作经历
         return Result.success();
+    }
+
+    /**
+     * 我自己写的
+     * @param id
+     * @return
+     */
+    @DeleteMapping
+    public Result deleteUserById(@RequestParam(value = "ids") String id){
+        String[] ids = id.split(",");
+        List<Integer> list = Arrays.stream(ids).map(Integer::valueOf).toList();
+        log.info("删除用户:{}",list);
+        empService.deleteUserById(list);
+        return Result.success();
+    }
+
+    /**
+     * 可以直接接收数组
+     * @param id
+     * @return
+     */
+//    @DeleteMapping
+//    public Result delete(@RequestParam(value = "ids") List<Integer> ids){
+//       log.info("删除用户{}",ids);
+//       empService.deleteUser(ids);
+//       return Result.success();
+//
+//    }
+
+    @GetMapping("/{id}")
+    public Result queryEmpInfo(@PathVariable(value = "id")Integer id){
+        log.info("查询用户id为{}的所有信息",id);
+        return Result.success();
+
     }
 }

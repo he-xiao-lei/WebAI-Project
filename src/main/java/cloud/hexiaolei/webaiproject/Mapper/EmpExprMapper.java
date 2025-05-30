@@ -14,4 +14,5 @@ public interface EmpExprMapper {
      * 添加用户经历
      */
     void insertEmpExpr(List<EmpExpr> exprList);
+    void deleteEmpExprById(List<Integer> ids);
 }

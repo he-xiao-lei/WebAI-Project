@@ -3,6 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cloud.hexiaolei.webaiproject.Mapper.EmpMapper">
+    <delete id="deleteUserById">
+        delete from emp where id in
+        <foreach collection="ids"  item="id" separator="," open="(" close=")">
+                    #{id}
+        </foreach>
+    </delete>
 
     <!--    原始方式-->
     <!--    <select id="queryPages" resultType="cloud.hexiaolei.webaiproject.pojo.Emp">-->

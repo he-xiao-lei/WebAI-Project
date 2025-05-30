@@ -23,8 +23,9 @@ public class EmpServiceImpl implements EmpService {
     private final EmpMapper empMapper;
     private final EmpExprMapper empExprMapper;
     private final EmpLogService empLogService;
+
     @Autowired
-    public EmpServiceImpl(EmpMapper empMapper,EmpExprMapper empExprMapper,EmpLogService empLogService){
+    public EmpServiceImpl(EmpMapper empMapper, EmpExprMapper empExprMapper, EmpLogService empLogService) {
         this.empMapper = empMapper;
         this.empExprMapper = empExprMapper;
         this.empLogService = empLogService;
@@ -35,22 +36,23 @@ public class EmpServiceImpl implements EmpService {
 //    public PageResult<Emp> queryPages(Integer page,Integer pageSize) {
 //        List<Emp> emps = empMapper.queryPages((page - 1) * pageSize,pageSize);
 //        PageResult<Emp> pageResult = new PageResult<>(count(),emps);
-////        pageResult.setRow(emps);
-////        pageResult.setTotal(count());
+
+    /// /        pageResult.setRow(emps);
+    /// /        pageResult.setTotal(count());
 //        return pageResult;
 //    }
-@Override
-public PageResult<Emp> queryPages(EmpQueryParam empQueryParam) {
-   //1. 设置需要查询的页码和每页的个数
-   PageHelper.startPage(empQueryParam.getPage(),empQueryParam.getPageSize());
-   //2. 调用方法进行查询
-   List<Emp> emps = empMapper.queryPages(empQueryParam);
+    @Override
+    public PageResult<Emp> queryPages(EmpQueryParam empQueryParam) {
+        //1. 设置需要查询的页码和每页的个数
+        PageHelper.startPage(empQueryParam.getPage(), empQueryParam.getPageSize());
+        //2. 调用方法进行查询
+        List<Emp> emps = empMapper.queryPages(empQueryParam);
 
-    //3. 返回结果
-   Page<Emp> empPage = (Page<Emp>) emps;
-   return new PageResult<>(empPage.getTotal(),emps);
+        //3. 返回结果
+        Page<Emp> empPage = (Page<Emp>) emps;
+        return new PageResult<>(empPage.getTotal(), emps);
 
-}
+    }
 
     @Override
     @Transactional(rollbackFor = {Exception.class})//此注解表示将当前方法加入spring事务管理，一个方法内有两次及以上的事件才需要启用事务管理
@@ -68,17 +70,33 @@ public PageResult<Emp> queryPages(EmpQueryParam empQueryParam) {
             //业务操作不一致
             //3.工作经历添加,因为有可能是因为是实习生工作
             List<EmpExpr> exprList = emp.getExprList();
-            if (!CollectionUtils.isEmpty(exprList)){
+            if (!CollectionUtils.isEmpty(exprList)) {
                 //遍历集合，给员工经历中的deptId赋值
                 exprList.forEach(empExpr -> empExpr.setEmpId(emp.getId()));
                 empExprMapper.insertEmpExpr(exprList);
             }
         } finally {//一定会执行
-            EmpLog empLog = new EmpLog(null,LocalDateTime.now(),"新增员工"+emp);
+            EmpLog empLog = new EmpLog(null, LocalDateTime.now(), "新增员工" + emp);
             //记录操作日志
             empLogService.insertLog(empLog);
         }
 
+
+    }
+
+    @Override
+    @Transactional(rollbackFor = {Exception.class})
+    public void deleteUserById(List<Integer> ids) {
+        try{
+            //删除用户
+            empMapper.deleteUserById(ids);
+            //删除用户工作经历
+            empExprMapper.deleteEmpExprById(ids);
+        }finally {
+            EmpLog empLog = new EmpLog(null, LocalDateTime.now(), "删除员工,id="+ids);
+            //记录操作日志
+            empLogService.insertLog(empLog);
+        }
 
     }
 
