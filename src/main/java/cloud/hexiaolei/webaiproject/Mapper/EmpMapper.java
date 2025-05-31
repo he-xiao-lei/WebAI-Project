@@ -21,4 +21,23 @@ public interface EmpMapper {
         void insertUser(Emp emp);
 
         void deleteUserById(List<Integer> ids);
+
+
+
+//-- 根据Id查找员工和员工工作经历
+//        select e.*,
+//        ee.id ee_id,
+//        ee.emp_id ee_id,
+//        ee.begin ee_begin,
+//        ee.end ee_end,
+//        ee.company ee_company,
+//        ee.job ee_job
+//        from emp e left join tlias.emp_expr ee on e.id = ee.emp_id where e.id = 22;
+        Emp getInfo(Integer id);
+
+        /**
+         * 根据id修改员工基本信息
+         * @param emp 每一个员工
+         */
+        void updateById(Emp emp);
 }

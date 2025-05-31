@@ -21,8 +21,8 @@ public class EmpController {
     }
     @GetMapping
     public Result page(EmpQueryParam empQueryParam){
-        /*
-          原来public Result page(
+        /**
+         *  原来public Result page(
                       @RequestParam String name,
          *             @RequestParam Integer gender,
          *             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,//设置前端传入格式
@@ -78,10 +78,28 @@ public class EmpController {
 //
 //    }
 
+    /**
+     * 根据id查询员工信息
+     * @param id 路径参数
+     * @return 返回默认的success
+     */
     @GetMapping("/{id}")
-    public Result queryEmpInfo(@PathVariable(value = "id")Integer id){
+    public Result getInfo(@PathVariable(value = "id")Integer id){
         log.info("查询用户id为{}的所有信息",id);
-        return Result.success();
+        Emp emp = empService.getInfo(id);
+        return Result.success(emp);
 
+    }
+
+    /**
+     * 修改员工
+     * @param emp
+     * @return
+     */
+    @PutMapping
+    public Result update(@RequestBody Emp emp){
+        log.info("修改员工:{}",emp);
+        empService.update(emp);
+        return Result.success();
     }
 }
