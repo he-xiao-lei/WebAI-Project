@@ -5,16 +5,23 @@
 <mapper namespace="cloud.hexiaolei.webaiproject.Mapper.EmpMapper">
     <update id="updateById">
         update emp
-        set username    = #{username},
-            name        = #{name},
-            gender      = #{gender},
-            phone       = #{phone},
-            job         = #{job},
-            salary      = #{salary},
-            image       = #{image},
-            entry_date  = #{entryDate},
-            dept_id     = #{deptId},
-            update_time = #{updateTime}
+        <set>
+            <!-- 使用MyBatis的<set>标签可以动态生成更新语句中的字段赋值部分 -->
+            <!-- 与普通set的区别在于：当没有任何条件满足时，不会产生多余的逗号或语法错误 -->
+            <!-- 每个<if>标签内的条件字段只有在传入参数不为空时才会加入到最终的SQL语句中 -->
+            <!-- 同时会自动去除最后匹配项末尾的逗号，避免SQL语法错误 -->
+#             如果这里不使用动态sql，那么如果只修改员工姓名，那么其他属性都是null值，会导致错误
+            <if test="username != null and username != ''">username = #{username},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="phone != null and phone != ''">phone = #{phone},</if>
+            <if test="job != null and job != ''">job = #{job},</if>
+            <if test="salary != null">salary = #{salary},</if>
+            <if test="image != null and image != ''">image = #{image},</if>
+            <if test="entryDate != null">entry_date = #{entryDate},</if>
+            <if test="deptId != null">dept_id = #{deptId},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </set>
         where id = #{id}
     </update>
     <delete id="deleteUserById">
