@@ -79,6 +79,13 @@
         FROM emp
         GROUP BY job order by job_number;
     </select>
+    <select id="countEmpGenderData" resultType="java.util.Map">
+        SELECT
+            IF(gender = 1, '男性员工', '女性员工') AS name,
+            COUNT(*) AS value
+        FROM emp
+        GROUP BY gender;
+    </select>
 
     <!--    自定义结果集 ofType集合里每个参数的类型-->
     <resultMap id="empResultMap" type="cloud.hexiaolei.webaiproject.pojo.Emp">
