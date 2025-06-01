@@ -1,6 +1,9 @@
 package cloud.hexiaolei.webaiproject.controller;
 
-import cloud.hexiaolei.webaiproject.pojo.*;
+import cloud.hexiaolei.webaiproject.pojo.Emp;
+import cloud.hexiaolei.webaiproject.pojo.EmpQueryParam;
+import cloud.hexiaolei.webaiproject.pojo.PageResult;
+import cloud.hexiaolei.webaiproject.pojo.Result;
 import cloud.hexiaolei.webaiproject.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,4 +105,6 @@ public class EmpController {
         empService.update(emp);
         return Result.success();
     }
+
+
 }
