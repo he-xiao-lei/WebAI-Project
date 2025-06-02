@@ -16,7 +16,7 @@
     <select id="queryClazzPage" resultType="cloud.hexiaolei.webaiproject.pojo.Clazz">
         SELECT c.*, e.name AS master_name
         FROM clazz c
-                 INNER JOIN emp e ON c.master_id = e.id and c.name like concat('%',#{name},'%')
+                 INNER JOIN emp e ON c.master_id = e.id and c.name like concat('%',#{name},'%') and end_date between #{begin} and #{end}
 
     </select>
     <select id="getClazzInfoById" resultType="cloud.hexiaolei.webaiproject.pojo.Clazz">
