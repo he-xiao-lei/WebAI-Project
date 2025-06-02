@@ -86,6 +86,11 @@
         FROM emp
         GROUP BY gender;
     </select>
+    <select id="selectAllEmp" resultType="cloud.hexiaolei.webaiproject.pojo.Emp">
+        select e.*
+        from emp e
+        left join dept d on e.dept_id = d.id
+    </select>
 
     <!--    自定义结果集 ofType集合里每个参数的类型-->
     <resultMap id="empResultMap" type="cloud.hexiaolei.webaiproject.pojo.Emp">

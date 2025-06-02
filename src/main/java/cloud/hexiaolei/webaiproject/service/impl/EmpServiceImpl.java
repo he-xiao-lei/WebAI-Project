@@ -126,6 +126,10 @@ public class EmpServiceImpl implements EmpService {
         }
     }
 
+    @Override
+    public List<Emp> getAllEmp() {
+        return empMapper.selectAllEmp();
+    }
 
 
 }

@@ -2,7 +2,6 @@ package cloud.hexiaolei.webaiproject.Mapper;
 
 import cloud.hexiaolei.webaiproject.pojo.Emp;
 import cloud.hexiaolei.webaiproject.pojo.EmpQueryParam;
-import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -45,10 +44,11 @@ public interface EmpMapper {
         void updateById(Emp emp);
 
         //统计员工职位人数
-       @MapKey("jobName")
        List<Map<String, Object>> countEmpJobData();
 
 
        //统计员工性别
         List<Map<String,Object>> countEmpGenderData();
+
+        List<Emp> selectAllEmp();
 }

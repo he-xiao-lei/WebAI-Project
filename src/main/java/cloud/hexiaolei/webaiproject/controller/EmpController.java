@@ -68,20 +68,7 @@ public class EmpController {
         return Result.success();
     }
 
-    /**
-     * 可以直接接收数组
-     * @param id
-     * @return
-     */
-//    @DeleteMapping
-//    public Result delete(@RequestParam(value = "ids") List<Integer> ids){
-//       log.info("删除用户{}",ids);
-//       empService.deleteUser(ids);
-//       return Result.success();
-//
-//    }
-
-    /**
+     /**
      * 根据id查询员工信息
      * @param id 路径参数
      * @return 返回默认的success
@@ -104,6 +91,11 @@ public class EmpController {
         log.info("修改员工:{}",emp);
         empService.update(emp);
         return Result.success();
+    }
+    @GetMapping("/list")
+    public Result getEmpList(){
+        List<Emp> allEmp = empService.getAllEmp();
+        return Result.success(allEmp);
     }
 
 
