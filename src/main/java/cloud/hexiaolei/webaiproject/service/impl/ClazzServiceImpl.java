@@ -71,4 +71,16 @@ public class ClazzServiceImpl implements ClazzService {
         return clazzMapper.getClazzInfoById(id);
     }
 
+    @Override
+    public void modifyClazz(Clazz clazz) {
+        clazz.setUpdateTime(LocalDateTime.now());
+        if (clazz.getBeginDate().isBefore(LocalDate.now())){
+            clazz.setStatus("已开课");
+        }else {
+            clazz.setStatus("未开课");
+        }
+        clazzMapper.modifyClazz(clazz);
+
+    }
+
 }

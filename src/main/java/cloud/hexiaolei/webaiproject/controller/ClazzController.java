@@ -41,6 +41,8 @@ public class ClazzController {
         return Result.success();
     }
     /**
+     * id
+     * 回显功能，修改的前置步骤
      * 3.4 根据ID查询
      * 3.4.1 基本信息
      * 请求路径：/clazzs/{id}
@@ -51,5 +53,17 @@ public class ClazzController {
     public Result getClazzInfo(@PathVariable(value = "id")Integer id){
         Clazz clazzInfoById = clazzService.getClazzInfoById(id);
         return Result.success(clazzInfoById);
+    }
+    /**
+     * 3.5 修改班级
+     * 3.5.1 基本信息
+     * 请求路径：/clazzs
+     * 请求方式：PUT
+     * 接口描述：该接口用于修改班级的数据信息
+     */
+    @PutMapping
+    public Result modifyClazz(@RequestBody Clazz clazz){
+        clazzService.modifyClazz(clazz);
+        return Result.success();
     }
 }

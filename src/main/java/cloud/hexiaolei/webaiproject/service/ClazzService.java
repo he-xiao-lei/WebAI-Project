@@ -12,4 +12,6 @@ public interface ClazzService {
     void insertClazz(Clazz clazz);
 
     Clazz getClazzInfoById(Integer id);
+
+    void modifyClazz(Clazz clazz);
 }

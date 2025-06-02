@@ -7,6 +7,9 @@
         INSERT INTO clazz (name, room, begin_date, end_date, master_id, subject,status,create_time,update_time)
         VALUES (#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject},#{status},#{createTime},#{updateTime})
     </insert>
+    <update id="modifyClazz">
+        update clazz set name = #{name}, room=#{room},begin_date=#{beginDate},end_date=#{endDate},master_id=#{masterId},subject=#{subject},update_time=#{updateTime},status=#{status} where id = #{id};
+    </update>
     <delete id="deleteClazzById">
         delete from clazz where id = #{id};
     </delete>
