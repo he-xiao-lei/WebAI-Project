@@ -32,7 +32,12 @@ public class ClazzController {
     @DeleteMapping("/{id}")
     public Result deleteClazzById(@PathVariable(value = "id")Integer id){
         clazzService.deleteClazzById(id);
+        return Result.success();
+    }
 
+    @PostMapping
+    public Result insertClazz(@RequestBody Clazz clazz){
+        clazzService.insertClazz(clazz);
         return Result.success();
     }
 }

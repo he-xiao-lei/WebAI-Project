@@ -11,4 +11,6 @@ public interface ClazzMapper {
     List<Clazz> queryClazzPage(ClazzQueryParam clazzQueryParam);
 
     void deleteClazzById(Integer id);
+
+    void insertClazz(Clazz clazz);
 }
