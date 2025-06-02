@@ -4,7 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cloud.hexiaolei.webaiproject.Mapper.StudentMapper">
     <select id="queryStudents" resultType="cloud.hexiaolei.webaiproject.pojo.Student">
-        select st.*,cl.name clazzName
-        from students st inner join clazz cl where st.clazzId = cl.id
+        select st.*, cl.name clazzName
+        from students st
+        inner join clazz cl on st.clazzId = cl.id
+        <where>
+            <if test="name != null and name != ''">
+                st.name like concat('%', #{name}, '%')
+            </if>
+            <if test="degree != null">
+                and degree = #{degree}
+            </if>
+            <if test="clazzId != null">
+                and clazzId = #{clazzId}
+            </if>
+        </where>
+        order by st.update_time desc
     </select>
 </mapper>

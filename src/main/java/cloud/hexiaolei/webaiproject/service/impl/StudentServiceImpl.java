@@ -23,7 +23,7 @@ public class StudentServiceImpl implements StudentService {
     public PageResult<Student> queryStudents(StudentQueryParam studentQueryParam) {
         PageHelper.startPage(studentQueryParam.getPage(),studentQueryParam.getPageSize());
 
-        List<Student> students = studentMapper.queryStudents();
+        List<Student> students = studentMapper.queryStudents(studentQueryParam);
 
         Page<Student> studentsList = (Page<Student>) students;
 
