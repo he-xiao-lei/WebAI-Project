@@ -40,4 +40,16 @@ public class ClazzController {
         clazzService.insertClazz(clazz);
         return Result.success();
     }
+    /**
+     * 3.4 根据ID查询
+     * 3.4.1 基本信息
+     * 请求路径：/clazzs/{id}
+     * 请求方式：GET
+     * 接口描述：该接口用于根据主键ID查询班级的信息
+     */
+    @GetMapping("/{id}")
+    public Result getClazzInfo(@PathVariable(value = "id")Integer id){
+        Clazz clazzInfoById = clazzService.getClazzInfoById(id);
+        return Result.success(clazzInfoById);
+    }
 }

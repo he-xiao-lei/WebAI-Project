@@ -13,4 +13,6 @@ public interface ClazzMapper {
     void deleteClazzById(Integer id);
 
     void insertClazz(Clazz clazz);
+
+    Clazz getClazzInfoById(Integer id);
 }

@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cloud.hexiaolei.webaiproject.Mapper.ClazzMapper">
     <insert id="insertClazz">
-        INSERT INTO clazz (name, room, begin_date, end_date, master_id, subject,status)
-        VALUES (#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject},#{status})
+        INSERT INTO clazz (name, room, begin_date, end_date, master_id, subject,status,create_time,update_time)
+        VALUES (#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject},#{status},#{createTime},#{updateTime})
     </insert>
     <delete id="deleteClazzById">
         delete from clazz where id = #{id};
@@ -16,6 +16,9 @@
         FROM clazz c
                  INNER JOIN emp e ON c.master_id = e.id and c.name like concat('%',#{name},'%')
 
+    </select>
+    <select id="getClazzInfoById" resultType="cloud.hexiaolei.webaiproject.pojo.Clazz">
+        select c.*,e.name master_name  from clazz c,emp e  where c.id = #{id} and e.id= c.master_id;
     </select>
 </mapper>
 

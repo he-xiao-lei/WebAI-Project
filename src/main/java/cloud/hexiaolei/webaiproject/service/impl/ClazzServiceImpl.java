@@ -64,6 +64,11 @@ public class ClazzServiceImpl implements ClazzService {
             EmpLog empLog = new EmpLog(null,LocalDateTime.now(),"添加班级:"+clazz);
             empLogMapper.insert(empLog);
         }
-
     }
+
+    @Override
+    public Clazz getClazzInfoById(Integer id) {
+        return clazzMapper.getClazzInfoById(id);
+    }
+
 }
