@@ -77,9 +77,9 @@ public class EmpServiceImpl implements EmpService {
                 empExprMapper.insertEmpExpr(exprList);
             }
         } finally {//一定会执行
-            EmpLog empLog = new EmpLog(null, LocalDateTime.now(), "新增员工" + emp);
+            InfoLog infoLog = new InfoLog(null, LocalDateTime.now(), "新增员工" + emp);
             //记录操作日志
-            empLogService.insertLog(empLog);
+            empLogService.insertLog(infoLog);
         }
 
 
@@ -94,9 +94,9 @@ public class EmpServiceImpl implements EmpService {
             //删除用户工作经历
             empExprMapper.deleteEmpExprById(ids);
         }finally {
-            EmpLog empLog = new EmpLog(null, LocalDateTime.now(), "删除员工,id="+ids);
+            InfoLog infoLog = new InfoLog(null, LocalDateTime.now(), "删除员工,id="+ids);
             //记录操作日志
-            empLogService.insertLog(empLog);
+            empLogService.insertLog(infoLog);
         }
 
     }

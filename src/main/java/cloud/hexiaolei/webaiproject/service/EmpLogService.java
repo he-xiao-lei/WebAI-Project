@@ -1,9 +1,9 @@
 package cloud.hexiaolei.webaiproject.service;
 
-import cloud.hexiaolei.webaiproject.pojo.EmpLog;
+import cloud.hexiaolei.webaiproject.pojo.InfoLog;
 
 public interface EmpLogService {
 
-     void insertLog(EmpLog empLog);
+     void insertLog(InfoLog infoLog);
 
 }

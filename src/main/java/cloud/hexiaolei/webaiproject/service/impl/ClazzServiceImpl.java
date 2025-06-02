@@ -4,7 +4,7 @@ import cloud.hexiaolei.webaiproject.Mapper.ClazzMapper;
 import cloud.hexiaolei.webaiproject.Mapper.EmpLogMapper;
 import cloud.hexiaolei.webaiproject.pojo.Clazz;
 import cloud.hexiaolei.webaiproject.pojo.ClazzQueryParam;
-import cloud.hexiaolei.webaiproject.pojo.EmpLog;
+import cloud.hexiaolei.webaiproject.pojo.InfoLog;
 import cloud.hexiaolei.webaiproject.pojo.PageResult;
 import cloud.hexiaolei.webaiproject.service.ClazzService;
 import com.github.pagehelper.Page;
@@ -54,15 +54,17 @@ public class ClazzServiceImpl implements ClazzService {
         try {
             clazz.setCreateTime(LocalDateTime.now());
             clazz.setUpdateTime(LocalDateTime.now());
-            if (clazz.getBeginDate().isBefore(LocalDate.now())){
-                clazz.setStatus("已开课");
-            }else {
+            if (LocalDate.now().isBefore(clazz.getBeginDate())){
                 clazz.setStatus("未开课");
+            }else if(LocalDate.now().isAfter(clazz.getEndDate())) {
+                clazz.setStatus("已结课");
+            }else {
+                clazz.setStatus("在读");
             }
             clazzMapper.insertClazz(clazz);
         } finally {
-            EmpLog empLog = new EmpLog(null,LocalDateTime.now(),"添加班级:"+clazz);
-            empLogMapper.insert(empLog);
+            InfoLog infoLog = new InfoLog(null,LocalDateTime.now(),"添加班级:"+clazz);
+            empLogMapper.insert(infoLog);
         }
     }
 
@@ -72,14 +74,22 @@ public class ClazzServiceImpl implements ClazzService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void modifyClazz(Clazz clazz) {
-        clazz.setUpdateTime(LocalDateTime.now());
-        if (clazz.getBeginDate().isBefore(LocalDate.now())){
-            clazz.setStatus("已开课");
-        }else {
-            clazz.setStatus("未开课");
+        try {
+            clazz.setUpdateTime(LocalDateTime.now());
+            if (LocalDate.now().isBefore(clazz.getBeginDate())){
+                   clazz.setStatus("未开课");
+               } else if(LocalDate.now().isAfter(clazz.getEndDate())) {
+                   clazz.setStatus("已结课");
+               }else {
+                   clazz.setStatus("在读");
+               }
+            clazzMapper.modifyClazz(clazz);
+        } finally {
+            InfoLog infoLog = new InfoLog(null,LocalDateTime.now(),"修改班级"+clazz);
+            empLogMapper.insert(infoLog);
         }
-        clazzMapper.modifyClazz(clazz);
 
     }
 

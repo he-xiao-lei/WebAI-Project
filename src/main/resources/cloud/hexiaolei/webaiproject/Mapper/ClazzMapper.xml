@@ -14,7 +14,6 @@
         delete from clazz where id = #{id};
     </delete>
     <select id="queryClazzPage" resultType="cloud.hexiaolei.webaiproject.pojo.Clazz">
-
         SELECT c.*, e.name AS master_name
         FROM clazz c
                  INNER JOIN emp e ON c.master_id = e.id and c.name like concat('%',#{name},'%')
