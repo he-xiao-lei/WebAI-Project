@@ -6,4 +6,6 @@ import cloud.hexiaolei.webaiproject.pojo.PageResult;
 
 public interface ClazzService {
     PageResult<Clazz> queryClazzPage(ClazzQueryParam clazzQueryParam);
+
+    void deleteClazzById(Integer id);
 }

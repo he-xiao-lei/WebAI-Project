@@ -3,6 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cloud.hexiaolei.webaiproject.Mapper.ClazzMapper">
+    <delete id="deleteClazzById">
+        delete from clazz where id = #{id};
+    </delete>
     <select id="queryClazzPage" resultType="cloud.hexiaolei.webaiproject.pojo.Clazz">
 
         SELECT c.*, e.name AS master_name

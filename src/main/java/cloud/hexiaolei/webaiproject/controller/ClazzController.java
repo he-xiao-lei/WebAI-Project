@@ -7,9 +7,7 @@ import cloud.hexiaolei.webaiproject.pojo.Result;
 import cloud.hexiaolei.webaiproject.service.ClazzService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -30,5 +28,11 @@ public class ClazzController {
     public Result queryClass(ClazzQueryParam clazzQueryParam){
         PageResult<Clazz> clazzPageResult = clazzService.queryClazzPage(clazzQueryParam);
         return Result.success(clazzPageResult);
+    }
+    @DeleteMapping("/{id}")
+    public Result deleteClazzById(@PathVariable(value = "id")Integer id){
+        clazzService.deleteClazzById(id);
+
+        return Result.success();
     }
 }

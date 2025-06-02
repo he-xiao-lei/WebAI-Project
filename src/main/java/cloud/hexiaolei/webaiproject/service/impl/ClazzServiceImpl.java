@@ -19,6 +19,12 @@ public class ClazzServiceImpl implements ClazzService {
     private ClazzServiceImpl(ClazzMapper clazzMapper){
         this.clazzMapper = clazzMapper;
     }
+
+    /**
+     * 查询班级信息
+     * @param clazzQueryParam 查询参数
+     * @return 查询到的页
+     */
     @Override
     public PageResult<Clazz> queryClazzPage(ClazzQueryParam clazzQueryParam) {
         PageHelper.startPage(clazzQueryParam.getPage(),clazzQueryParam.getPageSize());
@@ -27,5 +33,10 @@ public class ClazzServiceImpl implements ClazzService {
         List<Clazz> clazzes = clazzMapper.queryClazzPage(clazzQueryParam);
         Page<Clazz> result = (Page<Clazz>) clazzes;
         return new PageResult<>(result.getTotal(),result);
+    }
+
+    @Override
+    public void deleteClazzById(Integer id) {
+        clazzMapper.deleteClazzById(id);
     }
 }
