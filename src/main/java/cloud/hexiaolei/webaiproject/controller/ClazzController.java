@@ -15,11 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/clazzs")
 public class ClazzController {
-    private final ClazzService clazzService;    @Autowired
+    private final ClazzService clazzService;
+    @Autowired
     public ClazzController(ClazzService clazzService) {
         this.clazzService = clazzService;
     }
 
+    /**
+     * 查询班级
+     * @param clazzQueryParam 查询参数
+     * @return 查询的班级
+     */
     @GetMapping
     public Result queryClass(ClazzQueryParam clazzQueryParam){
         PageResult<Clazz> clazzPageResult = clazzService.queryClazzPage(clazzQueryParam);
