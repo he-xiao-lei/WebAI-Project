@@ -7,6 +7,10 @@
         insert into students (name, no, gender, phone, degree, id_card, is_college, address, graduation_date, violation_count, violation_score, clazz_id, create_time, update_time)
         values (#{name}, #{no}, #{gender}, #{phone}, #{degree}, #{idCard}, #{isCollege}, #{address}, #{graduationDate}, #{violationCount}, #{violationScore}, #{clazzId}, #{createTime},#{updateTime})
     </insert>
+    <update id="updateStudent">
+        update students set name = #{name}, no = #{no}, gender = #{gender}, phone = #{phone}, degree = #{degree}, id_card = #{idCard}, is_college = #{isCollege}, address = #{address}, graduation_date = #{graduationDate}, violation_count = #{violationCount}, violation_score = #{violationScore}, clazz_id = #{clazzId},update_time = #{updateTime}
+        where id = #{id}
+    </update>
     <delete id="deleteStudentsById">
         delete from students where id in
         <foreach collection="list" item="id" separator="," open="(" close=")">
@@ -16,7 +20,7 @@
     <select id="queryStudents" resultType="cloud.hexiaolei.webaiproject.pojo.Student">
         select st.*, cl.name clazzName
         from students st
-        inner join clazz cl on st.clazzId = cl.id
+        inner join clazz cl on st.clazz_id = cl.id
         <where>
             <if test="name != null and name != ''">
                 st.name like concat('%', #{name}, '%')
@@ -25,9 +29,12 @@
                 and degree = #{degree}
             </if>
             <if test="clazzId != null">
-                and clazzId = #{clazzId}
+                and clazz_id = #{clazzId}
             </if>
         </where>
         order by st.update_time desc
+    </select>
+    <select id="queryStudentById" resultType="cloud.hexiaolei.webaiproject.pojo.Student">
+        select * from students where id = #{id}
     </select>
 </mapper>

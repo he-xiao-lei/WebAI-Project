@@ -12,4 +12,8 @@ public interface StudentService {
     void deleteStudentsById(List<Integer> list);
 
     void addStudent(Student student);
+
+    Student queryStudentById(Integer id);
+
+    void updateStudent(Student student);
 }

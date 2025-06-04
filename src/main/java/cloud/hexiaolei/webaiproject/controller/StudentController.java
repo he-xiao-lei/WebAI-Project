@@ -34,9 +34,35 @@ public class StudentController {
         studentService.deleteStudentsById(list);
         return Result.success();
     }
+
+    /**
+     * 添加学员
+     * @param student 添加的每一个学生
+     * @return 成功
+     */
     @PostMapping
     public Result addStudent(@RequestBody Student student){
+        log.info("添加员工信息:{}",student);
         studentService.addStudent(student);
         return Result.success();
     }
+
+    /**
+     * 根据id查询员工
+     * @param id 员工id
+     * @return 员工信息
+     */
+    @GetMapping("/{id}")
+    public Result queryStudentById(@PathVariable(value = "id") Integer id){
+        log.info("查询员工id为{}的员工信息",id);
+        Student student = studentService.queryStudentById(id);
+        return Result.success(student);
+    }
+    @PutMapping
+    public Result updateStudent(@RequestBody Student student){
+        log.info("更新员工信息:{}",student);
+        studentService.updateStudent(student);
+        return Result.success();
+    }
+
 }
