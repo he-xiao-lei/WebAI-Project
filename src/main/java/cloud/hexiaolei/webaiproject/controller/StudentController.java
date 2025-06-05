@@ -64,5 +64,11 @@ public class StudentController {
         studentService.updateStudent(student);
         return Result.success();
     }
+    @PutMapping("/violation/{id}/{score}")
+    public Result updateStudentViolation(@PathVariable(value = "id") Integer id,@PathVariable(value = "score") Integer score){
+        log.info(" 学生id{}扣{}分",id,score);
+        studentService.updateStudentViolation(id,score);
+        return Result.success();
+    }
 
 }
