@@ -65,27 +65,8 @@
                  left join tlias.emp_expr ee on e.id = ee.emp_id
         where e.id = #{id};
     </select>
-    <select id="countEmpJobData" resultType="java.util.Map">
-        SELECT
-            CASE job
-                WHEN 1 THEN '班主任'
-                WHEN 2 THEN '讲师'
-                WHEN 3 THEN '学工主管'
-                WHEN 4 THEN '教研主管'
-                WHEN 5 THEN '咨询师'
-                ELSE '其他'
-                END AS job_name,
-            COUNT(*) AS job_number
-        FROM emp
-        GROUP BY job order by job_number;
-    </select>
-    <select id="countEmpGenderData" resultType="java.util.Map">
-        SELECT
-            IF(gender = 1, '男性员工', '女性员工') AS name,
-            COUNT(*) AS value
-        FROM emp
-        GROUP BY gender;
-    </select>
+
+
     <select id="selectAllEmp" resultType="cloud.hexiaolei.webaiproject.pojo.Emp">
         select e.*
         from emp e

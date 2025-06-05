@@ -2,7 +2,7 @@ package cloud.hexiaolei.webaiproject.controller;
 
 import cloud.hexiaolei.webaiproject.pojo.EmpJobOption;
 import cloud.hexiaolei.webaiproject.pojo.Result;
-import cloud.hexiaolei.webaiproject.service.EmpService;
+import cloud.hexiaolei.webaiproject.pojo.StudentClazzOption;
 import cloud.hexiaolei.webaiproject.service.ReportService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +18,11 @@ import java.util.Map;
 @RequestMapping("/report")
 public class ReportController {
     private final ReportService reportService;
-    private final EmpService empService;
 
     @Autowired
-    public ReportController(ReportService reportService, EmpService empService){
+    public ReportController(ReportService reportService){
         this.reportService= reportService;
-        this.empService = empService;
+
     }
 
     /**
@@ -41,5 +40,17 @@ public class ReportController {
         log.info("返回员工性别统计");
         List<Map<String, Object>> empGenderData = reportService.getEmpGenderData();
         return Result.success(empGenderData);
+    }
+
+    @GetMapping("/studentDegreeData")
+    public Result getStudnetDegreeData(){
+        List<Map<String,  Object>> result = reportService.getStudentDegreeData();
+        return Result.success(result);
+    }
+    @GetMapping("/studentCountData")
+    public Result getStudentGender(){
+        StudentClazzOption studentClazzData = reportService.getStudentClazzData();
+        return Result.success(studentClazzData);
+
     }
 }

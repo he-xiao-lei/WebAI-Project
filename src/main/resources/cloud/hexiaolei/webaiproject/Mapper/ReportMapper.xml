@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cloud.hexiaolei.webaiproject.Mapper.ReportMapper">
+
+    <select id="countEmpJobData" resultType="java.util.Map">
+        SELECT
+            CASE job
+                WHEN 1 THEN '班主任'
+                WHEN 2 THEN '讲师'
+                WHEN 3 THEN '学工主管'
+                WHEN 4 THEN '教研主管'
+                WHEN 5 THEN '咨询师'
+                ELSE '其他'
+                END AS job_name,
+            COUNT(*) AS job_number
+        FROM emp
+        GROUP BY job order by job_number;
+    </select>
+    <select id="countEmpGenderData" resultType="java.util.Map">
+        SELECT
+            IF(gender = 1, '男性员工', '女性员工') AS name,
+            COUNT(*) AS value
+        FROM emp
+        GROUP BY gender;
+    </select>
+    <select id="countStudentDegreeData" resultType="java.util.Map">
+        SELECT
+            CASE degree
+                WHEN 1 THEN '初中'
+                WHEN 2 THEN '高中'
+                WHEN 3 THEN '大专'
+                WHEN 4 THEN '本科'
+                WHEN 5 THEN '硕士'
+                WHEN 6 THEN '博士'
+                ELSE '其他'
+                END AS name,
+            COUNT(*) AS value
+        FROM students
+        GROUP BY degree order by value;
+    </select>
+    <select id="countStudentClazzData" resultType="java.util.Map">
+#                 select c.name as name,count(*) as count from clazz c inner join students s group by s.clazz_id;
+select c.name name,count(*) value from clazz c,students s where s.clazz_id = c.id group by s.clazz_id ;
+    </select>
+</mapper>
