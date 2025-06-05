@@ -42,6 +42,7 @@
     </select>
     <select id="countStudentClazzData" resultType="java.util.Map">
 #                 select c.name as name,count(*) as count from clazz c inner join students s group by s.clazz_id;
-select c.name name,count(*) value from clazz c,students s where s.clazz_id = c.id group by s.clazz_id ;
+select c.name as name,count(*) as value from clazz c,students s where s.clazz_id = c.id group by s.clazz_id ;
+# select count(*) as value from clazz c,students s group by s.clazz_id ;
     </select>
 </mapper>
