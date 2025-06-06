@@ -5,6 +5,7 @@ import cloud.hexiaolei.webaiproject.Mapper.EmpMapper;
 import cloud.hexiaolei.webaiproject.pojo.*;
 import cloud.hexiaolei.webaiproject.service.EmpLogService;
 import cloud.hexiaolei.webaiproject.service.EmpService;
+import cloud.hexiaolei.webaiproject.utils.JwtUtils;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,10 @@ import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Slf4j
 /**
  * 因为员工经历表是员工表的附属，所以最后还是通过一个EmpServiceImpl可以实现
@@ -138,7 +142,14 @@ public class EmpServiceImpl implements EmpService {
         //判断是否有这个员工，如果有，就返回登录信息对象
         if (e != null){
             log.info("登录成功,员工{}",e);
-            return new LoginInfo(e.getId(),e.getUsername(),e.getName(),"");
+
+
+            //生成JWT令牌
+            Map<String,Object> claims = new HashMap<>();
+            claims.put("id",e.getId());
+            claims.put("username",e.getUsername());
+            String token = JwtUtils.generateToken(claims);
+            return new LoginInfo(e.getId(),e.getUsername(),e.getName(),token);
         }
 
         //没有这个员工，返回null
