@@ -51,4 +51,6 @@ public interface EmpMapper {
         List<Map<String,Object>> countEmpGenderData();
 
         List<Emp> selectAllEmp();
+    //根据员工用户名密码查找员工信息
+    Emp selectByUsernameAndPassword(Emp emp);
 }

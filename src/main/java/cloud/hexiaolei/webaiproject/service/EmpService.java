@@ -3,6 +3,7 @@ package cloud.hexiaolei.webaiproject.service;
 
 import cloud.hexiaolei.webaiproject.pojo.Emp;
 import cloud.hexiaolei.webaiproject.pojo.EmpQueryParam;
+import cloud.hexiaolei.webaiproject.pojo.LoginInfo;
 import cloud.hexiaolei.webaiproject.pojo.PageResult;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface EmpService{
     void update(Emp emp);
 
     List<Emp> getAllEmp();
+//员工登录方法
+    LoginInfo login(Emp emp);
 }

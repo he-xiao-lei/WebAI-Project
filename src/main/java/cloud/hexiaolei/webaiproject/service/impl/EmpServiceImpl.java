@@ -7,6 +7,7 @@ import cloud.hexiaolei.webaiproject.service.EmpLogService;
 import cloud.hexiaolei.webaiproject.service.EmpService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,7 @@ import org.springframework.util.CollectionUtils;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
-
+@Slf4j
 /**
  * 因为员工经历表是员工表的附属，所以最后还是通过一个EmpServiceImpl可以实现
  */
@@ -129,6 +130,19 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public List<Emp> getAllEmp() {
         return empMapper.selectAllEmp();
+    }
+
+    @Override
+    public LoginInfo login(Emp emp) {
+        Emp e = empMapper.selectByUsernameAndPassword(emp);
+        //判断是否有这个员工，如果有，就返回登录信息对象
+        if (e != null){
+            log.info("登录成功,员工{}",e);
+            return new LoginInfo(e.getId(),e.getUsername(),e.getName(),"");
+        }
+
+        //没有这个员工，返回null
+        return null;
     }
 
 
