@@ -16,6 +16,15 @@ public class TokenFilter implements Filter {
         log.info("初始化");
     }
 
+    /**
+     * - 问题1：放行后访问对应资源，资源访问完成后，还会回到Filter中吗？ 会
+     * - 问题2：如果回到Filter中，是重新执行还是执行放行后的逻辑呢？ 执行放行后逻辑
+     * | 拦截路径     | urlPatterns 值 | 含义                             |
+     * | ------------ | -------------- | -------------------------------- |
+     * | 拦截具体路径 | /login         | 只有访问 /login 路径时，才会被拦截 |
+     * | 目录拦截     | /emps/*        | 访问 /emps 下的所有资源，都会被拦截 |
+     * | 拦截所有     | /*             | 访问所有资源，都会被拦截           |
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         //1.获取请求路径
