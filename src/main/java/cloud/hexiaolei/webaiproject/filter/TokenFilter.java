@@ -2,13 +2,12 @@ package cloud.hexiaolei.webaiproject.filter;
 
 import cloud.hexiaolei.webaiproject.utils.JwtUtils;
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-@WebFilter(urlPatterns = "/*")
+//@WebFilter(urlPatterns = "/*")
 @Slf4j
 public class TokenFilter implements Filter {
     @Override
