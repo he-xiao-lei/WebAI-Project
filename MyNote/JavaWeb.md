@@ -5532,7 +5532,21 @@ public class GlobalExceptionHandler {
 
 AOP:Aspect Oriented Programing(面向切面编程), 可简单的理解为面向特定方法编程 
 
+
+AOP只是一种思想，但是Spring框架中对这种思想进行了实现，所以是SpringAOP
 例如查询每一个方法执行耗时的方法，如果每一个方法里面都写，会很复杂，所以直接使用AOP即可
+好处:
+1. 减少重复代码
+2. 代码无侵入
+3. 提高开发效率
+4. 维护方便
 
 
+如何使用AOP
+1. 先引入依赖
+2. 编写切面类
 
+AOP常见使用场景
+记录操作
+事物管理
+权限控制
