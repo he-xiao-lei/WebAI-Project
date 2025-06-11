@@ -3,11 +3,10 @@ package cloud.hexiaolei.webaiproject.aop;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
-import org.springframework.stereotype.Component;
 
 @Slf4j
 //@Aspect
-@Component
+//@Component
 public class MyAspect1 {
 
     @Pointcut("execution(* cloud.hexiaolei.webaiproject.service.impl.*.*(..))")

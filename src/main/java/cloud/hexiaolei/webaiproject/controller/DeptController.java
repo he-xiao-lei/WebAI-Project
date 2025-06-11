@@ -32,7 +32,7 @@ public class DeptController {
     @DeleteMapping
     public Result deleteUserById(@RequestParam(value = "id") Integer id) {
         log.warn("根据id:{}删除部门", id);
-        deptService.deleteUserById(id);
+        deptService.deleteDeptById(id);
         return Result.success();
     }
 

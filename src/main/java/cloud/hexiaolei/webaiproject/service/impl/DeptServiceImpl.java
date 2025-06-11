@@ -12,16 +12,19 @@ import java.util.List;
 @Service
 public class DeptServiceImpl implements DeptService {
     private final DeptMapper deptMapper;
+
     @Autowired
     public DeptServiceImpl(DeptMapper deptMapper) {
         this.deptMapper = deptMapper;
     }
+
     @Override
     public List<Dept> findAll() {
         return deptMapper.findAll();
     }
+
     @Override
-    public void deleteUserById(Integer id) {
+    public void deleteDeptById(Integer id) {
         deptMapper.deleteDeptById(id);
     }
 

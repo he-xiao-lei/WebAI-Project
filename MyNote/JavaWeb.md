@@ -1,5 +1,4 @@
 > # 前端学习
->
 
 ## HTML-CSS
 
@@ -223,7 +222,7 @@ px：像素
 -->
 <video src="./video/news.mp4" controls width="80%"></video>
 <!-- <audio src="./audio/news_1739964534813.mp3" controls></audio> -->
-<p><!-- &nbsp;表示一个空格字符 -->
+<p><!--  表示一个空格字符 -->
     <b>央视网消息</b>
     （新闻联播）：作为共抓长江大保护的标志性工程，长江十年禁渔今年进入第四年。习近平总书记指出，长江禁渔是为全局计、为子孙谋的重要决策。牢记总书记嘱托，沿江省市持续推进长江水生生物多样性恢复，努力保障退捕渔民就业生活。这段时间，记者深入长江两岸，记录下禁渔工作取得的重要阶段性成效和广大干部群众坚定不移推进长江十年禁渔的扎实行动。
 </p>
@@ -346,7 +345,7 @@ px：像素
     -->
     <video src="./video/news.mp4" controls width="100%"></video>
     <!-- <audio src="./audio/news_1739964534813.mp3" controls></audio> -->
-    <p><!-- &nbsp;表示一个空格字符 -->
+    <p><!--  表示一个空格字符 -->
         <b>央视网消息</b>
         （新闻联播）：作为共抓长江大保护的标志性工程，长江十年禁渔今年进入第四年。习近平总书记指出，长江禁渔是为全局计、为子孙谋的重要决策。牢记总书记嘱托，沿江省市持续推进长江水生生物多样性恢复，努力保障退捕渔民就业生活。这段时间，记者深入长江两岸，记录下禁渔工作取得的重要阶段性成效和广大干部群众坚定不移推进长江十年禁渔的扎实行动。
     </p>
@@ -360,7 +359,7 @@ px：像素
     2.相对路径
       2.1./表示当前目录(可以省略)
       2.2../表示上一级目录
-     
+   
     alt-图片描述
     width-宽度
     height-高度,建议只设置一个,另一个会自动适应
@@ -627,6 +626,7 @@ body标签自带的8px的外边距
 ![image](./picture/image-4.png)
 
 label标签
+
 > 可以让被标签包裹的字被点击时也选中，而不是必须要点击圆圈
 
 总结
@@ -676,9 +676,7 @@ Web 标准也称网页标准，由一系列的标准组成，大部分由 W3C (W
 > 变量名需要遵循如下规则:
 
 - 只能用字母、数字、下划线 (_)、美元符号 ($) 组成，且数字不能开头
-
 - 变量名严格区分大小写，如 name 和 Name 是不同的变量
-
 - 不能使用关键字，如:let、var、if、for 等
 
 JS 中用 const 关键字来声明常量。
@@ -1245,7 +1243,7 @@ DOM操作核心思想: 将网页中所有元素当作对象处理，（标签的
 |:----------------:|:-------------:|:-------------:|:-------------:|
 |   click(鼠标点击)    | keydown(按下触发) | focus(获取焦点触发) | input(输入时触发)  |
 | mouseenter(鼠标移入) |  keyup(抬起触发)  |  blur(失去焦点)   | submit(提交时触发) |
-| mouseleave(鼠标移出) |
+| mouseleave(鼠标移出) |               |               |               |
 
 ### JS-核心语法-事件监听（优化）
 
@@ -1928,13 +1926,11 @@ axios.delete(url [, config])    发送delete请求
 axios.post(url [, data[, config]])  发送post请求
 axios.put(url [, data[, config]])   发送put请求
 
-get请求:`axios.get("https://mock.apifox.cn/m1/3083103-0-default/emps/list").then(result => {
-    console.log(result.data);
-})`
+get请求:
+`axios.get("https://mock.apifox.cn/m1/3083103-0-default/emps/list").then(result => { console.log(result.data); })`
 
-post请求:`axios.post("https://mock.apifox.cn/m1/3083103-0-default/emps/update","id=1").then(result => {
-    console.log(result.data);
-})`
+post请求:
+`axios.post("https://mock.apifox.cn/m1/3083103-0-default/emps/update","id=1").then(result => { console.log(result.data); })`
 
 method:请求方式
 url:路径
@@ -2049,6 +2045,7 @@ Maven坐标主要构成
 4. 点击刷新按钮，引入最新加入的坐标
 
 排除依赖
+
 > 指主动断开依赖的资源，被派出的资源无需执行版本
 
 ```xml
@@ -2109,7 +2106,7 @@ install时不会执行clean,因为不是同一套生命周期
 | 单元测试 | 对软件的基本组成单位进行测试，最小测试单位             | 检验软件基本组成单位的正确性         | 开发人员   |
 | 集成测试 | 将已分别通过测试的单元，按设计要求组合成系统或子系统，再进行的测试 | 检查单元之间的协作是否正确          | 开发人员   |
 | 系统测试 | 对已经集成好的软件系统进行彻底的测试                | 验证软件系统的正确性、性能是否满足指定的要求 | 测试人员   |
-| 交付测试 | 针对用户需求、业务流程进行的正式的测试               | 验证软件系统是否满足验收标准         | 客户/需求方 | 
+| 交付测试 | 针对用户需求、业务流程进行的正式的测试               | 验证软件系统是否满足验收标准         | 客户/需求方 |
 
 测试方法：白盒，黑盒，灰盒测试
 
@@ -2173,22 +2170,23 @@ JUnit提供了一些辅助方法，用来帮我们确定被测试的方法是否
 | `AssertionsassertNotNull(Object act, String msg)`                      | 检查对象是否不为null，为null，就报错。   |
 | `Assertions.assertTrue(boolean condition, String msg)`                 | 检查条件是否为true，不为true，就报错。   |
 | `Assertions.assertFalse(boolean condition, String msg)`                | 检查条件是否为false，不为false，就报错。 |
-| `Assertions. assertThrows(class expType, Executable exec, String msg)` | 检查两个对象引用是否相等，不相等，就报错。     | 
+| `Assertions. assertThrows(class expType, Executable exec, String msg)` | 检查两个对象引用是否相等，不相等，就报错。     |
 
 参数msg了可以写，也可以不写
 
 在JUnit中还提供了一些其他注解，还增强其功能，常见的注解有以下几个
-| 注解 | 说明 | 备注 |
-| ---------------- | ------------------------------------------------------------ | ------------------ |
-| `@Test`          | 测试类中的方法用它修饰才能成为测试方法，才能启动执行 | 单元测试 |
-| `@ParameterizedTest` | 参数化测试的注解（可以让单个测试运行多次，每次运行时仅参数不同） | 用了该注解，就不需要`@Test`
-注解了 |
-| `@ValueSource`   | 参数化测试的参数来源，赋予测试方法参数 | 与参数化测试注解配合使用 |
-| `@DisplayName`   | 指定测试类、测试方法显示的名称 （默认为类名、方法名） | |
-| `@BeforeEach`    | 用来修饰一个实例方法，该方法会在每一个测试方法执行之前执行一次。 | 初始化资源(准备工作） |
-| `@AfterEach`     | 用来修饰一个实例方法，该方法会在每一个测试方法执行之后执行一次。 | 释放资源(清理工作） |
-| `@BeforeAll`     | 用来修饰一个静态方法，该方法会在所有测试方法之前只执行一次。 | 初始化资源(准备工作） |
-| `@AfterAll`      | 用来修饰一个静态方法，该方法会在所有测试方法之后只执行一次。 | 释放资源(清理工作） |
+
+| 注解                   | 说明                               | 备注                |
+|----------------------|----------------------------------|-------------------|
+| `@Test`              | 测试类中的方法用它修饰才能成为测试方法，才能启动执行       | 单元测试              |
+| `@ParameterizedTest` | 参数化测试的注解（可以让单个测试运行多次，每次运行时仅参数不同） | 用了该注解，就不需要`@Test` |
+| 注解了                  |                                  |                   |
+| `@ValueSource`       | 参数化测试的参数来源，赋予测试方法参数              | 与参数化测试注解配合使用      |
+| `@DisplayName`       | 指定测试类、测试方法显示的名称 （默认为类名、方法名）      |                   |
+| `@BeforeEach`        | 用来修饰一个实例方法，该方法会在每一个测试方法执行之前执行一次。 | 初始化资源(准备工作）       |
+| `@AfterEach`         | 用来修饰一个实例方法，该方法会在每一个测试方法执行之后执行一次。 | 释放资源(清理工作）        |
+| `@BeforeAll`         | 用来修饰一个静态方法，该方法会在所有测试方法之前只执行一次。   | 初始化资源(准备工作）       |
+| `@AfterAll`          | 用来修饰一个静态方法，该方法会在所有测试方法之后只执行一次。   | 释放资源(清理工作）        |
 
 1. JUnit单元测试的方法，是否可以声明形参?
 
@@ -2220,7 +2218,7 @@ JUnit提供了一些辅助方法，用来帮我们确定被测试的方法是否
 | compile（默认） | Y   | Y    | Y      | log4j       |
 | test        | -   | Y    | -      | junit       |
 | provided    | Y   | Y    | -      | servlet-api |
-| runtime     | -   | Y    | Y      | jdbc驱动      | 
+| runtime     | -   | Y    | Y      | jdbc驱动      |
 
 ### Maven常见问题解决方式
 
@@ -2264,23 +2262,7 @@ JUnit提供了一些辅助方法，用来帮我们确定被测试的方法是否
 请求行：请求数据第一行（请求方式，资源路径，协议）
 `GET /hello?str=Itheima HTTP/1.1`
 请求头：第二行开始，格式key:value
-`
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en
-Cache-Control: max-age=0
-Connection: keep-alive
-Host: localhost:8080
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
-sec-ch-ua: "Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "Windows"
-`
+`Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7 Accept-Encoding: gzip, deflate, br, zstd Accept-Language: en Cache-Control: max-age=0 Connection: keep-alive Host: localhost:8080 Sec-Fetch-Dest: document Sec-Fetch-Mode: navigate Sec-Fetch-Site: none Sec-Fetch-User: ?1 Upgrade-Insecure-Requests: 1 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 sec-ch-ua: "Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135" sec-ch-ua-mobile: ?0 sec-ch-ua-platform: "Windows"`
 
 请求体：POST请求，存放请求参数
 
@@ -2361,7 +2343,7 @@ Connection: keep-alive
 | Content-Length   | 响应内容长度（字节数）   |
 | Content-Encoding | 响应压缩算法        |
 | Cache-Control    | 客户端缓存策略指示     |
-| Set-Cookie       | 浏览器设置cookie指令 | 
+| Set-Cookie       | 浏览器设置cookie指令 |
 
 响应数据设置
 Web 服务器对 HTTP 协议的响应数据进行了封装 (HttpServletRespoonse), 并在调用 Controller 方法的时候传递给
@@ -2389,8 +2371,6 @@ public void response(HttpServletResponse response) throws IOException {
 
 
 ```
-
-2.
 
 ```java
 /**
@@ -3182,7 +3162,6 @@ Bean对象:IOC容器中创建，管理的对象，称之为`Bean`
 还可以给beans加名字，在后面加括号，填名字就行
 
 - 要想让bean注解生效，还需要被组件扫描注解@ComponentScan扫描
-
 - 该注解虽然没有显式配置，但是实际上已经包含在了启动类声明@SpringBootApplication中，默认扫描范围是**启动类所在包和子包内**
 
 ```java
@@ -3366,15 +3345,15 @@ create table tablename
 
 ### MySQL数据类型
 
-| 数值类型      | tinyint | 1                                                    | (-128，127)                                               | (0，255)   | 小整数值                             |      |
-|-----------|---------|------------------------------------------------------|----------------------------------------------------------|-----------|----------------------------------|------|
-| smallint  | 2       | (-32768，32767)                                       | (0，65535)                                                | 大整数值      |                                  |      |
-| mediumint | 3       | (-8388608，8388607)                                   | (0，16777215)                                             | 大整数值      |                                  |      |
-| int       | 4       | (-2147483648，2147483647)                             | (0，4294967295)                                           | 大整数值      |                                  |      |
-| bigint    | 8       | (-2^63，2^63-1)                                       | (0，2^64-1)                                               | 极大整数值     |                                  |      |
-| float     | 4       | (-3.402823466 E+38，3.402823466351  E+38)             | 0 和 (1.175494351  E-38，3.402823466 E+38)                 | 单精度浮点数值   | float(5,2)：5表示整个数字长度，2 表示小数位个数   |      |
-| double    | 8       | (-1.7976931348623157 E+308，1.7976931348623157 E+308) | 0 和  (2.2250738585072014 E-308，1.7976931348623157 E+308) | 双精度浮点数值   | double(5,2)：5表示整个数字长度，2 表示小数位个数  |      |
-| decimal   |         |                                                      |                                                          | 小数值(精度更高) | decimal(5,2)：5表示整个数字长度，2 表示小数位个数 |      |
+| 数值类型      | tinyint | 1                                                    | (-128，127)                                               | (0，255)   | 小整数值                             |  |
+|-----------|---------|------------------------------------------------------|----------------------------------------------------------|-----------|----------------------------------|--|
+| smallint  | 2       | (-32768，32767)                                       | (0，65535)                                                | 大整数值      |                                  |  |
+| mediumint | 3       | (-8388608，8388607)                                   | (0，16777215)                                             | 大整数值      |                                  |  |
+| int       | 4       | (-2147483648，2147483647)                             | (0，4294967295)                                           | 大整数值      |                                  |  |
+| bigint    | 8       | (-2^63，2^63-1)                                       | (0，2^64-1)                                               | 极大整数值     |                                  |  |
+| float     | 4       | (-3.402823466 E+38，3.402823466351  E+38)             | 0 和 (1.175494351  E-38，3.402823466 E+38)                 | 单精度浮点数值   | float(5,2)：5表示整个数字长度，2 表示小数位个数   |  |
+| double    | 8       | (-1.7976931348623157 E+308，1.7976931348623157 E+308) | 0 和  (2.2250738585072014 E-308，1.7976931348623157 E+308) | 双精度浮点数值   | double(5,2)：5表示整个数字长度，2 表示小数位个数  |  |
+| decimal   |         |                                                      |                                                          | 小数值(精度更高) | decimal(5,2)：5表示整个数字长度，2 表示小数位个数 |  |
 
 例子：
 
@@ -3403,20 +3382,21 @@ MyBatis命名规范:XxxMapper,也称为Mapper接口
 - 准备工作
 
     - A. 创建 springboot 工程，引入 Mybatis 相关依赖
-
     - B. 准备数据库表、实体类
-
     - C. application.properties 中配置数据库连接信息
-
     - 配置代码
-
     - ```properties
+
+    ```
+
   spring.datasource.url=jdbc:mysql://localhost:3306/hxl
   spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
   spring.datasource.username=root
   spring.datasource.password=123456
-    ```
 
+  ```
+
+  ```
 - 定义 Mapper 接口 (`@Mapper`)，编写 SQL
 
 #### 2. SpringBoot 的单元测试类上需要加什么注解 ？
@@ -3433,10 +3413,10 @@ Mybatis的日志输出
 ### 数据库连接池
 
 - **数据库连接池**是一个容器，负责分配，管理数据库连接(Connection)
-
 - 他允许应用程序重复使用一个现有的数据库连接，而不是重复创建连接
 - 释放空闲时间超过最大空闲时间的连接，来避免因为没有释放连接而引起的数据库连接泄露
 - 优势
+
     1. 资源重用
     2. 提升系统响应速度
     3. 避免数据库连接泄露
@@ -3463,8 +3443,6 @@ SpringBoot默认连接池:Hikari
                <version>1.2.22</version>
     </dependency>
    ```
-
-
 2. 导入配置
 
    ```properties
@@ -3475,9 +3453,7 @@ SpringBoot默认连接池:Hikari
 ### MyBatis-增删改查-删除操作
 
 - 需求:根据删除用户信息
-
 - SQL:`delect * from user where id = 5;`
-
 - Mapper接口
 
   ```java
@@ -3494,10 +3470,10 @@ SpringBoot默认连接池:Hikari
 
   面试会问
 
-  | 符号   | 说明                                                   | 场景                       | 优缺点                |
-                | ------ | ------------------------------------------------------ | -------------------------- | --------------------- |
-  | #{...} | 占位符。执行时，会将 #{...} 替换为？，生成预编译 SQL   | 参数值传递                 | 安全、性能高 （推荐） |
-  | ${...} | 拼接符。直接将参数拼接在 SQL 语句中，存在 SQL 注入问题 | 表名、字段名动态设置时使用 | 不安全、性能低        |
+| 符号     | 说明                               | 场景            | 优缺点         |
+  |--------|----------------------------------|---------------|-------------|
+| #{...} | 占位符。执行时，会将 #{...} 替换为？，生成预编译 SQL | 参数值传递         | 安全、性能高 （推荐） |
+| ${...} | 拼接符。直接将参数拼接在 SQL 语句中，存在 SQL 注入问题 | 表名、字段名动态设置时使用 | 不安全、性能低     |
 
 ### MyBatis-增删改查-插入用户
 
@@ -3600,7 +3576,6 @@ void findByUsernameAndPasswordTest() {
 ### XML映射配置
 
 - 在MyBatis中,既可以通过注解配置sql语句，也可以通过xml语句配置
-
 - 默认规则:
 
     1. XML映射文件的名称与Mapper接口名称一致，并且将XML映射文件和Mapper接口放置在相同包下(同包同名)
@@ -3807,7 +3782,7 @@ JSON格式的参数，通常会使用到一个实体对象进行接收,。
 
 接收请求参数(路径参数):GET /depts/1
 
-​ 2
+2
 
 路径参数:直接通过请求URL直接传递参数，使用{...}来标识该路径参数,需要使用@PathVariable注解标识
 
@@ -3867,11 +3842,9 @@ package cloud.hexiaolei.webaiproject.controller;
 import cloud.hexiaolei.webaiproject.pojo.Dept;
 import cloud.hexiaolei.webaiproject.pojo.Result;
 import cloud.hexiaolei.webaiproject.service.DeptService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -3894,7 +3867,7 @@ public class DeptController {
     @DeleteMapping("/depts")
     public Result deleteUserById(@RequestParam(value = "id") Integer id) {
         System.out.println("根据部门删除id");
-        deptService.deleteUserById(id);
+        deptService.deleteDeptById(id);
         return Result.success();
     }
 
@@ -3931,11 +3904,9 @@ package cloud.hexiaolei.webaiproject.controller;
 import cloud.hexiaolei.webaiproject.pojo.Dept;
 import cloud.hexiaolei.webaiproject.pojo.Result;
 import cloud.hexiaolei.webaiproject.service.DeptService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -3959,7 +3930,7 @@ public class DeptController {
     @DeleteMapping
     public Result deleteUserById(@RequestParam(value = "id") Integer id) {
         System.out.println("根据部门删除id");
-        deptService.deleteUserById(id);
+        deptService.deleteDeptById(id);
         return Result.success();
     }
 
@@ -4452,10 +4423,10 @@ on 连接条件...;
 #### 子查询
 
 - 介绍:SQL语句中嵌套select语句，称为嵌套查询，又称为子查询
-
 - 形式：select * from t1 where column1 = (select column1 from t2...)
 - 说明:子查询外部可以是insert/update / delete/select,常用**select**
 - 分类:
+
     1. 标量子查询：子查询返回的结果为单个值
     2. 列子查询：子查询返回的结果为1列
     3. 行子查询：子查询返回结果为1行
@@ -5701,3 +5672,27 @@ SpringAOP通知循序
 
 - 目标方法前的通知方法，首字母靠前的先执行
 - 目标方法后的通知方法，首字母靠前的后执行
+
+可以使用@Order注解决定优先级，@Order(1)>@Order(2)数字越小，优先级越高
+
+### 切入点表达式
+
+介绍:描述切入点方法的一种表达式
+作用:用来决定项目中的哪些方法需要加入通知
+常见形式:
+
+1. execution(..):根据方法的签名来匹配
+2. @annotation(..):根据注解匹配
+
+@Pointcut("execution(* cloud.hexiaolei.webaiproject.service.impl.*.*(..))")
+这里cloud前面得*表示匹配任意返回值,前面省略了权限修饰符
+
+![img_4.png](img_4.png)
+
+![img_5.png](img_5.png)
+
+尽量基于接口描述
+比如
+cloud.hexiaolei.webaiproject.service.*.*(..)
+而不是
+cloud.hexiaolei.webaiproject.service.impl.*.*(..)
