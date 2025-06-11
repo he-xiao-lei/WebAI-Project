@@ -5697,3 +5697,33 @@ cloud.hexiaolei.webaiproject.service.*.*(..)
 而不是
 cloud.hexiaolei.webaiproject.service.impl.*.*(..)
 
+基于注解的方式，定义一个注解
+
+```java
+
+package cloud.hexiaolei.webaiproject.anno;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target(ElementType.METHOD)//表示这个注解只能加在方法上
+@Retention(RetentionPolicy.RUNTIME)//表示运行时生效
+//起到标识的作用
+public @interface LogOperation {
+
+}
+```
+
+然后直接在需要切入的方法上加上这个注解就可以了
+
+```java
+
+@Before("@annotation(cloud.hexiaolei.webaiproject.anno.LogOperation)")
+public void before() {
+    log.info("MyAspect6 -> before..");
+}
+```
+
+![img_6.png](img_6.png)
