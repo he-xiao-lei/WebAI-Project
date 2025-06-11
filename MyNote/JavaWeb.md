@@ -5696,3 +5696,4 @@ SpringAOP通知循序
 cloud.hexiaolei.webaiproject.service.*.*(..)
 而不是
 cloud.hexiaolei.webaiproject.service.impl.*.*(..)
+

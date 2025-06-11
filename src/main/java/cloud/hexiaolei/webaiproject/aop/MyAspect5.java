@@ -34,8 +34,11 @@ public class MyAspect5 {
 
     //    @Before("execution(public void cloud.hexiaolei.webaiproject.service.impl.DeptServiceImpl.deleteDeptById(java.lang.Integer))")
 //    @Before("execution(public void cloud.hexiaolei.webaiproject.service.impl.*.*(java.lang.Integer))")
-    @Before("execution(* cloud.hexiaolei.webaiproject.service.impl.DeptServiceImpl.findAll(..)) || " +
-            "execution(* cloud.hexiaolei.webaiproject.service.impl.DeptServiceImpl.deleteDeptById(..))")
+//    @Before("execution(* cloud.hexiaolei.webaiproject.service.impl.DeptServiceImpl.findAll(..)) || " +
+//            "execution(* cloud.hexiaolei.webaiproject.service.impl.DeptServiceImpl.deleteDeptById(..))")
+
+
+    @Before("@annotation(cloud.hexiaolei.webaiproject.anno.LogOperation)")
     public void before() {
         log.info("MyAspect6 -> before..");
     }
