@@ -1,13 +1,12 @@
 package cloud.hexiaolei.webaiproject.aop;
 
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-@Aspect
+//@Aspect
 public class MyAspect5 {
     //前置通知
     //@Before("execution(public void cloud.hexiaolei.service.impl.DeptServiceImpl.delete(java.lang.Integer))")

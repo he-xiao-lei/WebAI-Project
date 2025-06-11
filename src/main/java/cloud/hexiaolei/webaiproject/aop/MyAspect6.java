@@ -4,17 +4,18 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 @Slf4j
-//@Aspect
+@Aspect
 @Component
 public class MyAspect6 {
 
-    @Before("execution(* cloud.hexiaolei.webaiproject.service.impl.*.*(..))")
+    @Before("execution(* cloud.hexiaolei.webaiproject.service.*.*(..))")
     public void before(JoinPoint joinPoint) {
         log.info("before ....");
         //1. 获取目标对象
@@ -26,8 +27,8 @@ public class MyAspect6 {
         log.info("获取目标类: {}", className);
 
         //3. 获取目标方法
-        String methodName = joinPoint.getSignature().getName();
-        log.info("获取目标方法: {}", methodName);
+        String string = joinPoint.getSignature().getName();
+        log.info("获取目标方法: {}", string);
 
         //4. 获取目标方法参数
         Object[] args = joinPoint.getArgs();
