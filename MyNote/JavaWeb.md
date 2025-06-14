@@ -5782,3 +5782,46 @@ setCurrentId(empId);
 ```java
 return CurrentHolder.getCurrentId();
 ```
+
+## SpringBoot原理
+
+### Spring配置信息优先级
+properties > yml > yaml
+推荐统一使用一种配置文件,yml是主流
+
+SpringBoot除了支持配置文件属性，还可以使用Java系统属性和命令行参数进行配置
+- java系统属性
+```java
+-Dserver.port=9000
+```
+
+使用方式:
+点击配置选项，选择添加虚拟机选项
+
+
+- 命令行参数
+```powershell
+--server.port=10010
+``` 
+点击配置，选择程序实参
+
+优先级: 命令行 > java系统属性 > application.xxx文件
+想要运行已经打包好的也可以
+java -jar -Dxxx     jar包            --server.port=xxx
+
+
+打包好在cmd执行的方式
+java系统属性
+```powershell
+java "-Dserver.port=8080" -jar .\springboot-web-config-0.0.1-SNAPSHOT.jar
+```
+参数
+```powershell
+java -jar .\springboot-web-config-0.0.1-SNAPSHOT.jar --server.port=8081
+```
+ java [options] -jar <jar 文件> [args...]
+    options为java系统属性
+    args为参数
+### Bean管理
+
+### SpringBoot原理
