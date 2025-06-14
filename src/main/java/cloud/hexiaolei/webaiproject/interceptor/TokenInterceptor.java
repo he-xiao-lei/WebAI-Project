@@ -1,17 +1,17 @@
 package cloud.hexiaolei.webaiproject.interceptor;
 
+import cloud.hexiaolei.webaiproject.utils.CurrentHolder;
 import cloud.hexiaolei.webaiproject.utils.JwtUtils;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 @Component
 @Slf4j
-@ConditionalOnProperty(name = "custom.interceptor-enable", havingValue = "true")
 public class TokenInterceptor implements HandlerInterceptor {//需要实现handlerInterceptor接口
 
     @Override
@@ -31,7 +31,9 @@ public class TokenInterceptor implements HandlerInterceptor {//需要实现handl
             return false;
         }
         try {
-            JwtUtils.parseToken(token);
+            Claims claims = JwtUtils.parseToken(token);
+            Integer i = (Integer) claims.get("id");
+            CurrentHolder.setCurrentId(i);
         } catch (Exception e) {
             log.info("令牌非法或过期");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);//401状态码，未认证

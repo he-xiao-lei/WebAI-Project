@@ -4,17 +4,15 @@ import cloud.hexiaolei.webaiproject.utils.CurrentHolder;
 import cloud.hexiaolei.webaiproject.utils.JwtUtils;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
-@WebFilter(urlPatterns = "/*")
+//@WebFilter(urlPatterns = "/*")
 @Slf4j
 public class TokenFilter implements Filter {
-    private static ThreadLocal<String> userToken = new ThreadLocal<>();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

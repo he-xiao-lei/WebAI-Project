@@ -2,11 +2,12 @@ package cloud.hexiaolei.webaiproject.config;
 
 import cloud.hexiaolei.webaiproject.interceptor.TokenInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 //配置类
-//@Configuration//加入Configuration注解，表示这是一个配置类,同时也会加入Component注解，加入IOC容器
+@Configuration//加入Configuration注解，表示这是一个配置类,同时也会加入Component注解，加入IOC容器
 public class WebConfig implements WebMvcConfigurer {
     /**
      * | 拦截路径     | 含义                  | 举例                                                         |
@@ -28,7 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 //        registry.addInterceptor(demoInterceptor).addPathPatterns("/**");
-        registry.addInterceptor(tokenInterceptor).addPathPatterns("/**").excludePathPatterns("/login").excludePathPatterns("/depts").excludePathPatterns("/depts/*");//设置拦截路径的同时可以设置不要拦截的路径
+        registry.addInterceptor(tokenInterceptor).addPathPatterns("/**").excludePathPatterns("/login");//设置拦截路径的同时可以设置不要拦截的路径
     }
 
 }
