@@ -1,7 +1,6 @@
 package cloud.hexiaolei.webaiproject.service.impl;
 
 import cloud.hexiaolei.webaiproject.Mapper.DeptMapper;
-import cloud.hexiaolei.webaiproject.anno.LogOperation;
 import cloud.hexiaolei.webaiproject.pojo.Dept;
 import cloud.hexiaolei.webaiproject.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +38,11 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    @LogOperation
     public Dept findUserById(Integer id) {
         return deptMapper.findDeptById(id);
     }
 
     @Override
-    @LogOperation
     public void updateUser(Dept dept) {
         dept.setUpdateTime(LocalDateTime.now());
         deptMapper.updateDeptById(dept);

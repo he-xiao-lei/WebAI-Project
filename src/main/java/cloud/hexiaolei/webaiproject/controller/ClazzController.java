@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/clazzs")
 public class ClazzController {
     private final ClazzService clazzService;
+
     @Autowired
     public ClazzController(ClazzService clazzService) {
         this.clazzService = clazzService;
@@ -21,25 +22,28 @@ public class ClazzController {
 
     /**
      * 查询班级
+     *
      * @param clazzQueryParam 查询参数
      * @return 查询的班级
      */
     @GetMapping
-    public Result queryClass(ClazzQueryParam clazzQueryParam){
+    public Result queryClass(ClazzQueryParam clazzQueryParam) {
         PageResult<Clazz> clazzPageResult = clazzService.queryClazzPage(clazzQueryParam);
         return Result.success(clazzPageResult);
     }
+
     @DeleteMapping("/{id}")
-    public Result deleteClazzById(@PathVariable(value = "id")Integer id){
+    public Result delete(@PathVariable(value = "id") Integer id) {
         clazzService.deleteClazzById(id);
         return Result.success();
     }
 
     @PostMapping
-    public Result insertClazz(@RequestBody Clazz clazz){
+    public Result save(@RequestBody Clazz clazz) {
         clazzService.insertClazz(clazz);
         return Result.success();
     }
+
     /**
      * id
      * 回显功能，修改的前置步骤
@@ -50,10 +54,11 @@ public class ClazzController {
      * 接口描述：该接口用于根据主键ID查询班级的信息
      */
     @GetMapping("/{id}")
-    public Result getClazzInfo(@PathVariable(value = "id")Integer id){
+    public Result getClazzInfo(@PathVariable(value = "id") Integer id) {
         Clazz clazzInfoById = clazzService.getClazzInfoById(id);
         return Result.success(clazzInfoById);
     }
+
     /**
      * 3.5 修改班级
      * 3.5.1 基本信息
@@ -62,7 +67,7 @@ public class ClazzController {
      * 接口描述：该接口用于修改班级的数据信息
      */
     @PutMapping
-    public Result modifyClazz(@RequestBody Clazz clazz){
+    public Result update(@RequestBody Clazz clazz) {
         clazzService.modifyClazz(clazz);
         return Result.success();
     }

@@ -18,16 +18,18 @@ import java.util.List;
 @RequestMapping("/emps")
 public class EmpController {
     private final EmpService empService;
+
     @Autowired
-    public EmpController(EmpService empService){
+    public EmpController(EmpService empService) {
         this.empService = empService;
     }
+
     @GetMapping
-    public Result page(EmpQueryParam empQueryParam){
+    public Result page(EmpQueryParam empQueryParam) {
         /**
          *  原来public Result page(
-                      @RequestParam String name,
-         *             @RequestParam Integer gender,
+         @RequestParam String name,
+          *             @RequestParam Integer gender,
          *             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,//设置前端传入格式
          *             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end,//设置前端传入格式
          *             @RequestParam(defaultValue = "1") Integer page,
@@ -40,15 +42,16 @@ public class EmpController {
 
          */
 //        log.info("分页查询第{}页,每页{}个员工,姓名{},性别{},开始时间{},结束时间{}",page,pageSize,name,gender,begin,end);
-        log.info("参数{}",empQueryParam);
+        log.info("参数{}", empQueryParam);
         PageResult<Emp> pageResult = empService.queryPages(empQueryParam);
         return Result.success(pageResult);
         //
     }
+
     @PostMapping
-    public Result save(@RequestBody Emp emp){
+    public Result save(@RequestBody Emp emp) {
         //1.保存员工基本信息
-        log.info("添加员工{}",emp);
+        log.info("添加员工{}", emp);
         empService.insertUser(emp);
         //2.保存员工工作经历
         return Result.success();
@@ -56,26 +59,28 @@ public class EmpController {
 
     /**
      * 我自己写的
+     *
      * @param id
      * @return
      */
     @DeleteMapping
-    public Result deleteUserById(@RequestParam(value = "ids") String id){
+    public Result delete(@RequestParam(value = "ids") String id) {
         String[] ids = id.split(",");
         List<Integer> list = Arrays.stream(ids).map(Integer::valueOf).toList();
-        log.info("删除用户:{}",list);
+        log.info("删除用户:{}", list);
         empService.deleteUserById(list);
         return Result.success();
     }
 
-     /**
+    /**
      * 根据id查询员工信息
+     *
      * @param id 路径参数
      * @return 返回默认的success
      */
     @GetMapping("/{id}")
-    public Result getInfo(@PathVariable(value = "id")Integer id){
-        log.info("查询用户id为{}的所有信息",id);
+    public Result getInfo(@PathVariable(value = "id") Integer id) {
+        log.info("查询用户id为{}的所有信息", id);
         Emp emp = empService.getInfo(id);
         return Result.success(emp);
 
@@ -83,17 +88,19 @@ public class EmpController {
 
     /**
      * 修改员工
+     *
      * @param emp
      * @return
      */
     @PutMapping
-    public Result update(@RequestBody Emp emp){
-        log.info("修改员工:{}",emp);
+    public Result update(@RequestBody Emp emp) {
+        log.info("修改员工:{}", emp);
         empService.update(emp);
         return Result.success();
     }
+
     @GetMapping("/list")
-    public Result getEmpList(){
+    public Result getEmpList() {
         List<Emp> allEmp = empService.getAllEmp();
         return Result.success(allEmp);
     }

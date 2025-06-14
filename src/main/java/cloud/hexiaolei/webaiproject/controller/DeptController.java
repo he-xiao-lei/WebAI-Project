@@ -1,5 +1,6 @@
 package cloud.hexiaolei.webaiproject.controller;
 
+import cloud.hexiaolei.webaiproject.anno.LogOperation;
 import cloud.hexiaolei.webaiproject.pojo.Dept;
 import cloud.hexiaolei.webaiproject.pojo.Result;
 import cloud.hexiaolei.webaiproject.service.DeptService;
@@ -30,14 +31,16 @@ public class DeptController {
     }
 
     @DeleteMapping
-    public Result deleteUserById(@RequestParam(value = "id") Integer id) {
+    @LogOperation
+    public Result delete(@RequestParam(value = "id") Integer id) {
         log.warn("根据id:{}删除部门", id);
         deptService.deleteDeptById(id);
         return Result.success();
     }
 
     @PostMapping
-    public Result insertUser(@RequestBody Dept dept) {
+    @LogOperation
+    public Result save(@RequestBody Dept dept) {
 //        System.out.println("新增部门"+dept);
         log.warn("新增部门:{}", dept.getName());
         deptService.insertUser(dept);
@@ -53,7 +56,8 @@ public class DeptController {
     }
 
     @PutMapping
-    public Result updateUserById(@RequestBody Dept dept) {
+    @LogOperation
+    public Result update(@RequestBody Dept dept) {
         log.warn("修改部门:{}", dept);
         deptService.updateUser(dept);
         return Result.success();
