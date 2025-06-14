@@ -30,3 +30,6 @@ aliyun:
     endpoint: https://oss-cn-hangzhou.aliyuncs.com
     region: cn-hangzhou
     bucket-name: suiseiseki-javaai
+
+custom:
+  interceptor-enable: false

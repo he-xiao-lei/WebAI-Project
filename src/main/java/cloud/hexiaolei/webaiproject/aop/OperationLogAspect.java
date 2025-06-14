@@ -2,6 +2,7 @@ package cloud.hexiaolei.webaiproject.aop;
 
 import cloud.hexiaolei.webaiproject.Mapper.OperateLogMapper;
 import cloud.hexiaolei.webaiproject.pojo.OperateLog;
+import cloud.hexiaolei.webaiproject.utils.CurrentHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -23,6 +24,7 @@ import java.util.Arrays;
 public class OperationLogAspect {
 
     private final OperateLogMapper operateLogMapper;
+    private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
     @Autowired
     private OperationLogAspect(OperateLogMapper operateLogMapper) {
@@ -56,7 +58,7 @@ public class OperationLogAspect {
 
         // 创建 OperateLog 对象并填充数据
         OperateLog operateLog = new OperateLog();
-        operateLog.setOperateEmpId(getCurrentEmpId(""));
+        operateLog.setOperateEmpId(getCurrentEmpId());
         operateLog.setOperateTime(LocalDateTime.now()); // 设置操作时间
         operateLog.setClassName(className); // 设置目标类名
         operateLog.setMethodName(methodName); // 设置方法名
@@ -70,7 +72,7 @@ public class OperationLogAspect {
         return result;
     }
 
-    private Integer getCurrentEmpId(String token) {
-        return null;
+    private Integer getCurrentEmpId() {
+        return CurrentHolder.getCurrentId();
     }
 }

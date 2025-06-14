@@ -5728,4 +5728,57 @@ public void before() {
 
 ![img_6.png](img_6.png)
 
+什么是ThreadLocal
+不是一个thread，而是Thread的局部变量
 
+常用方法
+
+- public void set(T value) 设置当前线程局部变量的值
+- public T get() 返回当前线程对应的线程局部变量的值
+- public void remove() 一处当前线程的线程局部变量
+
+![img_7.png](img_7.png)
+
+大概代码
+工具类部分
+
+```java
+
+package cloud.hexiaolei.webaiproject.utils;
+
+public class CurrentHolder {
+
+    private static final ThreadLocal<Integer> CURRENT_LOCAL = new ThreadLocal<>();
+
+    public static void setCurrentId(Integer employeeId) {
+        CURRENT_LOCAL.set(employeeId);
+    }
+
+    public static Integer getCurrentId() {
+        return CURRENT_LOCAL.get();
+    }
+
+    public static void remove() {
+        CURRENT_LOCAL.remove();
+    }
+}
+
+
+```
+
+使用
+
+1. 存储
+
+```java
+Integer empId = (Integer) claims.get("id");
+CurrentHolder.
+
+setCurrentId(empId);
+```
+
+2. 使用
+
+```java
+return CurrentHolder.getCurrentId();
+```
