@@ -5823,5 +5823,201 @@ java -jar .\springboot-web-config-0.0.1-SNAPSHOT.jar --server.port=8081
     options为java系统属性
     args为参数
 ### Bean管理
+Spring支持5种作用域,后三种在web环境才生效
+以下是将图中内容转换为 Markdown 格式的结果：
+
+| 作用域    | 说明                                                         |
+| --------- | ------------------------------------------------------------ |
+| singleton | 容器内同 **名称** 的 bean 只有一个实例（单例）(默认)        |
+| prototype | 每次使用该 `bean` 时会创建新的实例（非单例/多例）            |
+| request   | 每个请求范围内会创建新的实例（web环境中，了解）              |
+| session   | 每个会话范围内会创建新的实例（web环境中，了解）              |
+| application | 每个应用范围内会创建新的实例（web环境中，了解）            |
+
+```console
+"C:\Program Files\Java\jdk-21\bin\java.exe" -javaagent:C:\Users\32394\AppData\Local\JetBrains\IntelliJIdea2025.1\captureAgent\debugger-agent.jar=file:///C:/Users/32394/AppData/Local/Temp/capture17976250468319940573.props -ea -Didea.test.cyclic.buffer.size=1048576 "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2025.1\lib\idea_rt.jar=54403" -Dkotlinx.coroutines.debug.enable.creation.stack.trace=false -Ddebugger.agent.enable.coroutines=true -Dkotlinx.coroutines.debug.enable.flows.stack.trace=true -Dkotlinx.coroutines.debug.enable.mutable.state.flows.stack.trace=true -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath "C:\Users\32394\.m2\repository\org\junit\platform\junit-platform-launcher\1.10.3\junit-platform-launcher-1.10.3.jar;C:\Users\32394\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;C:\Users\32394\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\32394\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\32394\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2025.1\lib\idea_rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2025.1\plugins\junit\lib\junit5-rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2025.1\plugins\junit\lib\junit-rt.jar;C:\baidunetdiskdownload\14. 后端Web进阶(SpringBoot原理&Maven高级)\资料\01. 配置优先级&bean管理\springboot-web-config\target\test-classes;C:\baidunetdiskdownload\14. 后端Web进阶(SpringBoot原理&Maven高级)\资料\01. 配置优先级&bean管理\springboot-web-config\target\classes;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot-starter-web\3.2.10\spring-boot-starter-web-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot-starter\3.2.10\spring-boot-starter-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot\3.2.10\spring-boot-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot-autoconfigure\3.2.10\spring-boot-autoconfigure-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot-starter-logging\3.2.10\spring-boot-starter-logging-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\ch\qos\logback\logback-classic\1.4.14\logback-classic-1.4.14.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\ch\qos\logback\logback-core\1.4.14\logback-core-1.4.14.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\apache\logging\log4j\log4j-to-slf4j\2.21.1\log4j-to-slf4j-2.21.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\slf4j\jul-to-slf4j\2.0.16\jul-to-slf4j-2.0.16.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot-starter-json\3.2.10\spring-boot-starter-json-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.4\jackson-datatype-jdk8-2.15.4.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.4\jackson-datatype-jsr310-2.15.4.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.4\jackson-module-parameter-names-2.15.4.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot-starter-tomcat\3.2.10\spring-boot-starter-tomcat-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.30\tomcat-embed-core-10.1.30.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.30\tomcat-embed-el-10.1.30.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.30\tomcat-embed-websocket-10.1.30.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-web\6.1.13\spring-web-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-beans\6.1.13\spring-beans-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\io\micrometer\micrometer-observation\1.12.10\micrometer-observation-1.12.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\io\micrometer\micrometer-commons\1.12.10\micrometer-commons-1.12.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-webmvc\6.1.13\spring-webmvc-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-aop\6.1.13\spring-aop-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-context\6.1.13\spring-context-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-expression\6.1.13\spring-expression-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\projectlombok\lombok\1.18.34\lombok-1.18.34.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\mybatis\spring\boot\mybatis-spring-boot-starter\3.0.3\mybatis-spring-boot-starter-3.0.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot-starter-jdbc\3.2.10\spring-boot-starter-jdbc-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-jdbc\6.1.13\spring-jdbc-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-tx\6.1.13\spring-tx-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\mybatis\spring\boot\mybatis-spring-boot-autoconfigure\3.0.3\mybatis-spring-boot-autoconfigure-3.0.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\mybatis\mybatis\3.5.14\mybatis-3.5.14.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\mybatis\mybatis-spring\3.0.3\mybatis-spring-3.0.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\mysql\mysql-connector-j\8.3.0\mysql-connector-j-8.3.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\github\pagehelper\pagehelper-spring-boot-starter\1.4.7\pagehelper-spring-boot-starter-1.4.7.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\github\pagehelper\pagehelper-spring-boot-autoconfigure\1.4.7\pagehelper-spring-boot-autoconfigure-1.4.7.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\github\pagehelper\pagehelper\5.3.3\pagehelper-5.3.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\github\jsqlparser\jsqlparser\4.5\jsqlparser-4.5.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\aliyun\oss\aliyun-sdk-oss\3.17.4\aliyun-sdk-oss-3.17.4.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\commons-codec\commons-codec\1.16.1\commons-codec-1.16.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\jdom\jdom2\2.0.6.1\jdom2-2.0.6.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\codehaus\jettison\jettison\1.5.4\jettison-1.5.4.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\aliyun\aliyun-java-sdk-core\4.5.10\aliyun-java-sdk-core-4.5.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\google\code\gson\gson\2.10.1\gson-2.10.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\jacoco\org.jacoco.agent\0.8.5\org.jacoco.agent-0.8.5-runtime.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\ini4j\ini4j\0.5.4\ini4j-0.5.4.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\slf4j\slf4j-api\2.0.16\slf4j-api-2.0.16.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\io\opentracing\opentracing-api\0.33.0\opentracing-api-0.33.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\io\opentracing\opentracing-util\0.33.0\opentracing-util-0.33.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\io\opentracing\opentracing-noop\0.33.0\opentracing-noop-0.33.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\aliyun\aliyun-java-sdk-ram\3.1.0\aliyun-java-sdk-ram-3.1.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\aliyun\aliyun-java-sdk-kms\2.11.0\aliyun-java-sdk-kms-2.11.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\javax\activation\javax.activation-api\1.2.0\javax.activation-api-1.2.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\javax\activation\activation\1.1.1\activation-1.1.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\glassfish\jaxb\jaxb-runtime\2.3.3\jaxb-runtime-2.3.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\sun\activation\jakarta.activation\1.2.2\jakarta.activation-1.2.2.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot-starter-test\3.2.10\spring-boot-starter-test-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot-test\3.2.10\spring-boot-test-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\boot\spring-boot-test-autoconfigure\3.2.10\spring-boot-test-autoconfigure-3.2.10.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\net\minidev\json-smart\2.5.1\json-smart-2.5.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\net\minidev\accessors-smart\2.5.1\accessors-smart-2.5.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\ow2\asm\asm\9.6\asm-9.6.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\net\bytebuddy\byte-buddy\1.14.19\byte-buddy-1.14.19.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\awaitility\awaitility\4.2.2\awaitility-4.2.2.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\junit\jupiter\junit-jupiter\5.10.3\junit-jupiter-5.10.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\mockito\mockito-core\5.7.0\mockito-core-5.7.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\net\bytebuddy\byte-buddy-agent\1.14.19\byte-buddy-agent-1.14.19.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\mockito\mockito-junit-jupiter\5.7.0\mockito-junit-jupiter-5.7.0.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-core\6.1.13\spring-core-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-jcl\6.1.13\spring-jcl-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\springframework\spring-test\6.1.13\spring-test-6.1.13.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\org\xmlunit\xmlunit-core\2.9.1\xmlunit-core-2.9.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\io\jsonwebtoken\jjwt\0.9.1\jjwt-0.9.1.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\fasterxml\jackson\core\jackson-databind\2.15.4\jackson-databind-2.15.4.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\fasterxml\jackson\core\jackson-annotations\2.15.4\jackson-annotations-2.15.4.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\com\fasterxml\jackson\core\jackson-core\2.15.4\jackson-core-2.15.4.jar;C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\cn\hutool\hutool-all\5.8.27\hutool-all-5.8.27.jar" com.intellij.rt.junit.JUnitStarter -ideVersion5 -junit5 com.itheima.TestScope,testScope
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+17:50:46.035 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.itheima.TestScope]: TestScope does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:50:46.151 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.itheima.SpringbootWebConfigApplication for test class com.itheima.TestScope
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v3.2.10)
+
+2025-06-14T17:50:46.517+08:00  INFO 32820 --- [           main] com.itheima.TestScope                    : Starting TestScope using Java 21.0.6 with PID 32820 (started by 32394 in C:\baidunetdiskdownload\14. 后端Web进阶(SpringBoot原理&Maven高级)\资料\01. 配置优先级&bean管理\springboot-web-config)
+2025-06-14T17:50:46.518+08:00  INFO 32820 --- [           main] com.itheima.TestScope                    : No active profile set, falling back to 1 default profile: "default"
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+
+
+,------.                           ,--.  ,--.         ,--.                         
+|  .--. '  ,--,--.  ,---.   ,---.  |  '--'  |  ,---.  |  |  ,---.   ,---.  ,--.--. 
+|  '--' | ' ,-.  | | .-. | | .-. : |  .--.  | | .-. : |  | | .-. | | .-. : |  .--' 
+|  | --'  \ '-'  | ' '-' ' \   --. |  |  |  | \   --. |  | | '-' ' \   --. |  |    
+`--'       `--`--' .`-  /   `----' `--'  `--'  `----' `--' |  |-'   `----' `--'    
+                   `---'                                   `--'                        is intercepting.
+
+2025-06-14T17:50:47.899+08:00  INFO 32820 --- [           main] com.itheima.TestScope                    : Started TestScope in 1.625 seconds (process running for 2.577)
+WARNING: A Java agent has been loaded dynamically (C:\Users\32394\Documents\apache-maven-3.9.9\mvn_repository\net\bytebuddy\byte-buddy-agent\1.14.19\byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+com.itheima.controller.DeptController@12f51a65
+
+进程已结束，退出代码为 0
+
+
+
+```
+同一个对象，表示是单例的,singleton
+默认单例bean是在项目启动时，创建的，创建完成后，会将该bean存入IOC容器中
+@Lazy注解，延迟初始化,让Bean在使用的时候才被创建，在类上加
+
+```java
+deptController
+com.itheima.controller.DeptController@6fa04914
+com.itheima.controller.DeptController@6fa04914
+com.itheima.controller.DeptController@6fa04914
+com.itheima.controller.DeptController@6fa04914
+com.itheima.controller.DeptController@6fa04914
+```
+
+bean作用域应用场景
+
+单例bean(singleton)
+- 无状态的bean
+多例bean(prototype)
+- 有状态的bean,会存数据的
+#### 面试题1：Spring容器的bean是单例的还是多例的？单例的bean是什么时候实例化的？
+- 默认是单例的  
+- 单例的bean，默认是**项目启动时实例化**的（通过`@Lazy`可以延迟初始化 ）  
+
+
+#### 面试题2：Spring容器的bean是线程安全的吗？
+- bean的线程安全取决于**bean的状态**及**bean的作用域**  
+- 单例bean：如果是**无状态的bean**（内部不保存任何状态信息），则是线程安全的。  
+- 单例bean：如果是**有状态的bean**（内部会保存状态信息，多个线程会同时操作该bean时，可能会出现数据不一致的问题 ），这样的bean则是线程不安全的。
+
+第三方Bean
+如果要管理的Bean来自第三方，是无法使用@Component及其衍生注解声明Bean的，要使用要@Bean注解
+
+@Bean表示将方法返回值交给IOC容器管理，成为IOC容器管理的Bean对象
+
+如果还需要依赖其他bean对象，直接在方法中定义形参即可，容器会自动装配
+
+通过@Bean注解的name或value可以声明bean的名称，如果不指定，默认Bean的名称就是方法名
+
+```java
+@Autowired
+    private ApplicationContext applicationContext;
+    是 Spring 的 IOC 容器接口，是整个应用程序的上下文环境，能用来获取 Spring 管理的 Bean。
+```
+不推荐写在启动类中
+若要管理的第三方Bean对象，建议对这个bean进行集中分类配置，可以通过@Configuration注解声明一个配置类
+
+
 
 ### SpringBoot原理
