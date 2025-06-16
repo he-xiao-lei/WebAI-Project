@@ -6021,3 +6021,22 @@ bean作用域应用场景
 
 
 ### SpringBoot原理
+
+SpringBoot核心
+依赖传递
+
+自动配置
+> 什么是自动配SpringBoot的自动配置就是当spring项目启动后，一些配置类，bean对象自动存入IOC容器，不需要我们手动声明，从而简化开发，省去繁琐的配置
+
+
+自动配置方案1:
+@Component+!ComponentScan
+
+
+自动配置方案2:
+@Import导入.@Import导入的类会被spring加载到ioc容器中，导入的形式有以下几种
+
+1. 导入普通类
+2. 导入配置类
+3. 导入ImportSelector 接口实现类
+4. 导入EnableXxxx注解，封装@Import注解
