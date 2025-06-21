@@ -11,7 +11,7 @@
         <relativePath/>
 <!--        会先从本次仓库找，找不到.然后去中央仓库-->
     </parent>
-    <groupId>cloud.hexiaolei</groupId>dd
+    <groupId>cloud.hexiaolei</groupId>
     <artifactId>tlias-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -20,12 +20,20 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lombok.version>1.18.38</lombok.version>
+        <jjwt.version>0.9.1</jjwt.version>
     </properties>
+<!--    聚合工程-->
+    <modules>
+        <module>../tlias-pojo</module>
+        <module>../tlias-utils</module>
+        <module>../WebAI-project</module>
+    </modules>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.38</version>
+            <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -33,12 +41,13 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
+<!--    只有版本管理功能-->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
-                <version>0.9.1</version>
+                <version>${jjwt.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.aliyun.oss</groupId>

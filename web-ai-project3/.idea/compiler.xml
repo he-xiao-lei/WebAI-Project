@@ -10,7 +10,7 @@
         <module name="tlias-utils" />
         <module name="tlias-pojo" />
       </profile>
-      <profile name="Annotation profile for WebAI-project" enabled="true">
+      <profile name="Annotation profile for tlias-parent" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />

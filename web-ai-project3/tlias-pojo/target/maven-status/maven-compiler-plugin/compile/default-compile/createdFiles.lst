@@ -1,0 +1,15 @@
+cloud\hexiaolei\webaiproject\pojo\StudentQueryParam.class
+cloud\hexiaolei\webaiproject\pojo\InfoLog.class
+cloud\hexiaolei\webaiproject\pojo\Clazz.class
+cloud\hexiaolei\webaiproject\pojo\Result.class
+cloud\hexiaolei\webaiproject\pojo\StudentClazzOption.class
+cloud\hexiaolei\webaiproject\pojo\OperateLog.class
+cloud\hexiaolei\webaiproject\pojo\EmpExpr.class
+cloud\hexiaolei\webaiproject\pojo\EmpQueryParam.class
+cloud\hexiaolei\webaiproject\pojo\LoginInfo.class
+cloud\hexiaolei\webaiproject\pojo\EmpJobOption.class
+cloud\hexiaolei\webaiproject\pojo\Emp.class
+cloud\hexiaolei\webaiproject\pojo\PageResult.class
+cloud\hexiaolei\webaiproject\pojo\Student.class
+cloud\hexiaolei\webaiproject\pojo\ClazzQueryParam.class
+cloud\hexiaolei\webaiproject\pojo\Dept.class
