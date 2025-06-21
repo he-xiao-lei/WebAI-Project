@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cloud.hexiaolei.webaiproject.Mapper.ClazzMapper">
+    <insert id="insertClazz">
+        INSERT INTO clazz (name, room, begin_date, end_date, master_id, subject,status,create_time,update_time)
+        VALUES (#{name}, #{room}, #{beginDate}, #{endDate}, #{masterId}, #{subject},#{status},#{createTime},#{updateTime})
+    </insert>
+    <update id="modifyClazz">
+        update clazz set name = #{name}, room=#{room},begin_date=#{beginDate},end_date=#{endDate},master_id=#{masterId},subject=#{subject},update_time=#{updateTime},status=#{status} where id = #{id};
+    </update>
+    <delete id="deleteClazzById">
+        delete from clazz where id = #{id};
+    </delete>
+    <select id="queryClazzPage" resultType="cloud.hexiaolei.webaiproject.pojo.Clazz">
+        SELECT c.*, e.name AS master_name
+        FROM clazz c
+                 INNER JOIN emp e on c.master_id = e.id
+            <where>
+                <if test="name !=null and name !=''">
+                    and c.name like concat('%',#{name},'%')
+                </if>
+                <if test="begin != null and end !=null">
+                    and end_date between #{begin} and #{end}
+                </if>
+            </where>
+    </select>
+    <select id="getClazzInfoById" resultType="cloud.hexiaolei.webaiproject.pojo.Clazz">
+        select c.*,e.name master_name  from clazz c,emp e  where c.id = #{id} and e.id= c.master_id;
+    </select>
+</mapper>
+
+

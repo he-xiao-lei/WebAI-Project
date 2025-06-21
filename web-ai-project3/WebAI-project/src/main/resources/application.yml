@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: spring-ai-project
+  datasource:
+    url: jdbc:mysql://localhost:3306/tlias
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  # 配置文件上传大小
+  servlet:
+    multipart:
+      #     最大单个文件大小
+      max-file-size: 1024GB
+      #      最大请求大小(包括表单项)
+      max-request-size: 2024GB
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 驼峰命名映射
+    map-underscore-to-camel-case: true
+
+#配置日志信息，查看spring事务管理的日志，现在可以看到debug的日志
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
+
+# 阿里云OSS配置
+aliyun:
+  oss:
+    endpoint: https://oss-cn-hangzhou.aliyuncs.com
+    region: cn-hangzhou
+    bucket-name: suiseiseki-javaai
