@@ -78,7 +78,7 @@
         </dependency>
         <dependency>
             <groupId>cloud.hexiaolei</groupId>
-            <artifactId>tlias-pojo</artifactId>
+            <artifactId>tlias-utils</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
