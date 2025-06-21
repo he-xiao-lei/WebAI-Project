@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "magicblock2",
+  "version": "${version}",
+  "name": "MagicBlock2",
+  "description": "一个小小的开发",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/magicblock2/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "cloud.hexiaolei.magicblock2.client.Magicblock2DataGenerator"
+    ],
+    "client": [
+      "cloud.hexiaolei.magicblock2.client.Magicblock2Client"
+    ],
+    "main": [
+      "cloud.hexiaolei.magicblock2.Magicblock2"
+    ]
+  },
+  "mixins": [
+    "magicblock2.mixins.json",
+    {
+      "config": "magicblock2.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
