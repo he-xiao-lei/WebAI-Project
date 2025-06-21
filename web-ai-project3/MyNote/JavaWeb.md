@@ -6084,3 +6084,14 @@ aliyun-oss-spring-boot-starter
 2. 在子工程的pom.xml配置继承关系
 3. 在父工程中配置各个工程共有的依赖(子工程会自动继承)
 
+```xml
+<parent>
+    <groupId>cloud.hexiaolei</groupId>
+    <artifactId>tlias-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../tlias-parent/pom.xml</relativePath>//父工程pom文件相对路径，因为如果不加，会先从本次仓库，然后是中央仓库找,但是是没有的
+</parent>
+```
+
+若子工程和父工程有相同依赖的不同版本，以子工程为准
+
