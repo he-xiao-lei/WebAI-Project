@@ -3388,12 +3388,12 @@ MyBatis命名规范:XxxMapper,也称为Mapper接口
     - ```properties
 
     ```
-
+  
   spring.datasource.url=jdbc:mysql://localhost:3306/hxl
   spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
   spring.datasource.username=root
   spring.datasource.password=123456
-
+  
   ```
 
   ```
@@ -5804,7 +5804,7 @@ SpringBoot除了支持配置文件属性，还可以使用Java系统属性和命
 
 ```powershell
 --server.port=10010
-``` 
+```
 
 点击配置，选择程序实参
 
@@ -6064,3 +6064,23 @@ aliyun-oss-spring-boot-starter
 目标:直接注入AliyunOSSOperate这个类
 
 1. 创建一个模块
+
+
+
+
+
+## Maven高级-继承
+
+概念:继承是描述两个工程之间的关系，于java中继承相似，子工程可以继承父工程的配置信息，常见于依赖关系的继承
+
+作用:简化依赖配置，统一依赖管理
+
+实现:<parent></parent>
+
+1. 创建maven模块tlias-parent,该工程为**父工程**,设置pom打包方式，默认(jar)
+
+![image-20250621132159442](C:\Users\32394\IdeaProjects\web-ai-project3\MyNote\picture\image-20250621132159442.png)
+
+2. 在子工程的pom.xml配置继承关系
+3. 在父工程中配置各个工程共有的依赖(子工程会自动继承)
+
