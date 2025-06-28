@@ -6,5 +6,10 @@
     <file url="file://$PROJECT_DIR$/aliyun-oss-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-autoconfiguration-test/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot-web-config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web-ai-project3/WebAI-project/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web-ai-project3/tlias-parent/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web-ai-project3/tlias-parent/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web-ai-project3/tlias-pojo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web-ai-project3/tlias-utils/src/main/java" charset="UTF-8" />
   </component>
 </project>

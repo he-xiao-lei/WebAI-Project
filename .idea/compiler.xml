@@ -7,11 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springboot-web-config" />
         <module name="aliyun-oss-spring-boot-starter" />
         <module name="springboot-autoconfiguration-test" />
-        <module name="aliyun-oss-spring-boot-autoconfigure" />
         <module name="itheima-utils" />
+        <module name="tlias-pojo" />
+        <module name="springboot-web-config" />
+        <module name="tlias-utils" />
+        <module name="aliyun-oss-spring-boot-autoconfigure" />
       </profile>
       <profile name="Annotation profile for WebAI-project" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -19,18 +21,31 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="WebAI-project" />
+      </profile>
+      <profile name="Annotation profile for tlias-parent" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="WebAI-project (1)" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="WebAI-project" options="-parameters" />
+      <module name="WebAI-project (1)" options="-parameters" />
       <module name="aliyun-oss-spring-boot-autoconfigure" options="-parameters" />
       <module name="aliyun-oss-spring-boot-starter" options="-parameters" />
       <module name="springboot-autoconfiguration-test" options="-parameters" />
       <module name="springboot-web-config" options="-parameters" />
+      <module name="tlias-pojo" options="-parameters" />
+      <module name="tlias-utils" options="-parameters" />
     </option>
   </component>
 </project>

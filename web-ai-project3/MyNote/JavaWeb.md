@@ -6179,3 +6179,88 @@ aliyun-oss-spring-boot-starter
 聚合:
 
 ![image-20250621150502494](C:\Users\32394\IdeaProjects\web-ai-project3\MyNote\picture\image-20250621150502494.png)
+
+![image-20250621160229249](C:\Users\32394\IdeaProjects\web-ai-project3\MyNote\picture\image-20250621160229249.png)
+
+## Maven私服
+
+idea配置上传资源的位置(url地址)
+
+install上传到本地仓库
+
+配置私服用户名密码
+
+deploy上传到私服
+
+**1. 设置私服的访问用户名/密码（在自己maven安装目录下的****`conf/settings.xml`****中的servers中配置）**
+
+```XML
+<server>
+    <id>maven-releases</id>
+    <username>admin</username>
+    <password>admin</password>
+</server>
+    
+<server>
+    <id>maven-snapshots</id>
+    <username>admin</username>
+    <password>admin</password>
+</server>
+```
+
+**2. 设置私服依赖下载的仓库组地址（在自己maven安装目录下的****`conf/settings.xml`****中的mirrors中配置）**
+
+```XML
+<mirror>
+    <id>maven-public</id>
+    <mirrorOf>*</mirrorOf>
+    <url>http://localhost:8081/repository/maven-public/</url>
+</mirror>
+```
+
+**3. 设置私服依赖下载的仓库组地址（在自己maven安装目录下的****`conf/settings.xml`****中的profiles中配置）**
+
+```XML
+<profile>
+    <id>allow-snapshots</id>
+    <activation>
+        <activeByDefault>true</activeByDefault>
+    </activation>
+    <repositories>
+        <repository>
+            <id>maven-public</id>
+            <url>http://localhost:8081/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+</profile>
+```
+
+**4. IDEA的maven工程的pom文件中配置上传（发布）地址(直接在****`tlias-parent`****中配置发布地址)**
+
+```XML
+<distributionManagement>
+    <!-- release版本的发布地址 -->
+    <repository>
+        <id>maven-releases</id>
+        <url>http://localhost:8081/repository/maven-releases/</url>
+    </repository>
+    <!-- snapshot版本的发布地址 -->
+    <snapshotRepository>
+        <id>maven-snapshots</id>
+        <url>http://localhost:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
+```
+
+配置完成之后，我们就可以在`tlias-parent`中执行**deploy**生命周期，将项目发布到私服仓库中。 
+
+
+
+
+
