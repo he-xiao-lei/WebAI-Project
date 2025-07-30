@@ -6262,5 +6262,49 @@ deploy上传到私服
 
 
 
+#  Vue
+
+## 环境准备以及介绍
+
+:create_vue是vue官方提供的脚手架工具
+
+提供了
+
+- 统一的目录结构
+- 本地调试
+- 热部署
+- 单元测试
+- 集成打包上线
+
+依赖环境:NodeJS
+
+npm:Node Package Manager,是NodeJS包管理器
+
+npm install xxx 
+
+创建一个工程化Vue项目，执行npm create vue@3.3.4
+
+![image-20250628102144308](C:\Users\32394\IdeaProjects\web-ai-project3\MyNote\picture\image-20250628102144308.png)
+
+Vue组件风格:选项式API，组合式API
+
+Vue3是组合式API
+
+ ![image-20250628121731250](C:\Users\32394\IdeaProjects\web-ai-project3\MyNote\picture\image-20250628121731250.png)
+
+
+
+## elementplus
+
+面向设计师的组件库
+
+快速入门
+
+准备工作:
+
+1. 创建vue项目
+2. 参照官方文档，安装element plus组件库(在当前项目下)
+3. main.js中引入elementplus组件库(参照官方文档)
+
 
 

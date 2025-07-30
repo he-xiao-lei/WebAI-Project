@@ -2,9 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/WebAI-project" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/magic-block-template-1.21.4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/vscode_java_code" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/web-ai-project3/WebAI-project" vcs="Git" />
   </component>
 </project>
