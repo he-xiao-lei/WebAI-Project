@@ -1,10 +1,11 @@
 <script setup>
-//引入views/layout/index.vue命名为Layout
-import Layout from "@/views/layout/index.vue";
+import { RouterView } from 'vue-router';
+
+
 </script>
 
 <template>
-  <Layout></Layout>
+<RouterView/>
 </template>
 
 <style scoped>

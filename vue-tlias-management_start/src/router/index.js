@@ -1,18 +1,80 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import IndexView from '@/views/index/index.vue'
+import ClazzView from '@/views/clazz/index.vue'
+import DeptView from '@/views/dept/index.vue'
+import EmpView from '@/views/emp/index.vue'
+// 让我访问到views目录下的index.vue
+
+import EmpReportView from '@/views/report/emp/index.vue'
+import StuReportView from '@/views/report/stu/index.vue'
+import LayoutView from '@/views/layout/index.vue'
+import LoginView from '@/views/login/index.vue'
+import StuView from '@/views/stu/index.vue'
+import LogView from '@/views/log/index.vue'
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: HomeView
-    // },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   component: () => import('../views/AboutView.vue')
-    // }
+    {
+      path: '/', name: '', component: LayoutView, redirect: '/index',//重定向到index
+
+      children: [
+        {
+          path: '/clazz',
+          name: 'clazz',
+          component: ClazzView
+        },
+        {
+          path: '/index',
+          name: 'index',
+          component: IndexView
+        },
+        {
+          path: '/dept',
+          name: 'dept',
+          component: DeptView
+        },
+        {
+          path: '/emp',
+          name: 'emp',
+          component: EmpView
+        },
+        {
+          path: '/empReport',
+          name: 'empReport',
+          component: EmpReportView
+        },
+        {
+          path: '/stuReport',
+          name: 'stuReport',
+          component: StuReportView
+        },
+        {
+          path: '/layout',
+          name: 'layout',
+          component: LayoutView
+        },
+
+        {
+          path: '/stu',
+          name: 'stu',
+          component: StuView
+        },
+        {
+          path: '/log',
+          name: 'log',
+          component: LogView
+        }
+      ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
+    }
+
   ]
 })
 

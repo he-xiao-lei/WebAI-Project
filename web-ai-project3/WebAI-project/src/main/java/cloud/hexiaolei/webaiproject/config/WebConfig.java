@@ -1,8 +1,10 @@
 package cloud.hexiaolei.webaiproject.config;
 
 import cloud.hexiaolei.webaiproject.interceptor.TokenInterceptor;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -27,9 +29,19 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Override
+    //添加拦截器
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(demoInterceptor).addPathPatterns("/**");
-        registry.addInterceptor(tokenInterceptor).addPathPatterns("/**").excludePathPatterns("/login");//设置拦截路径的同时可以设置不要拦截的路径
+        registry.addInterceptor(tokenInterceptor)
+                .excludePathPatterns("/**");//设置拦截路径的同时可以设置不要拦截的路径
     }
 
+    @Override
+    //配置跨域访问
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:5173")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .allowCredentials(true);
+    }
 }
