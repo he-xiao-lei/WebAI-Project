@@ -1,5 +1,5 @@
 <script setup>
-import { HomeFilled } from '@element-plus/icons-vue';
+import { HomeFilled, Menu, SwitchButton } from "@element-plus/icons-vue";
 import { RouterView } from 'vue-router';
 
 
@@ -13,7 +13,8 @@ import { RouterView } from 'vue-router';
         <span class="title">Tlias智能学习辅助系统</span>
         <span class="right_tool">
           <a href="">
-            <el-icon><EditPen /></el-icon> 修改密码 &nbsp;&nbsp;&nbsp; |  &nbsp;&nbsp;&nbsp;
+            <el-icon><EditPen /></el-icon> 修改密码 &nbsp;&nbsp;&nbsp; |
+            &nbsp;&nbsp;&nbsp;
           </a>
           <a href="">
             <el-icon><SwitchButton /></el-icon> 退出登录
