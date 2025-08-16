@@ -4,7 +4,7 @@ import { queryEmpApi } from "@/api/emp";
 import { ref, watch } from "vue";
 import { queryDeptApi } from "@/api/dept";
 import { ElMessage } from "element-plus";
-
+import { addEmpApi } from "@/api/emp";
 //元数据
 //职位列表数据
 const jobs = ref([
@@ -33,6 +33,25 @@ const employee = ref({
   image: "",
   exprList: [],
 });
+//表单校验规则
+const rules = ref({
+  username: [
+    { required: true, message: "请输入用户名", trigger: "blur" },
+    { min: 2, max: 20, message: "用户名长度应在2到20个字符之间", trigger: "blur" },
+  ],
+  name: [
+    { required: true, message: "请输入姓名", trigger: "blur" },
+    { min: 2, max: 10, message: "姓名长度应在2到10个字符之间", trigger: "blur" },
+  ],
+  gender: [{ required: true, message: "请选择性别", trigger: "change" }],
+  phone: [
+    { required: true, message: "请输入手机号", trigger: "blur" },
+    { pattern: /^1\d{10}$/, message: "请输入有效的手机号", trigger: "blur" },
+  ],
+});
+// 声明一个表单的引用
+
+const FormRef = ref();
 const depts = ref([]);
 // 控制弹窗
 const dialogVisible = ref(false);
@@ -41,6 +60,22 @@ const dialogTitle = ref("新增员工");
 const addEmp = () => {
   dialogVisible.value = true;
   dialogTitle.value = "新增员工";
+  employee.value = {
+    username: "",
+    name: "",
+    gender: "",
+    phone: "",
+    job: "",
+    salary: "",
+    deptId: "",
+    entryDate: "",
+    image: "",
+    exprList: [],
+  };
+  // 重置表单提示信息
+  if (FormRef.value) {
+    FormRef.value.resetFields();
+  }
 };
 const searchEmp = ref({
   name: "",
@@ -199,14 +234,13 @@ const addExpr = () => {
 watch(
   () => employee.value.exprList,
   (newValue, oldValue) => {
-    if (employee.value.exprList && employee.value.exprList.length > 0) {
+    if (employee.value.exprList && employee.value.exprList > 0) {
       employee.value.exprList.forEach((expr) => {
         expr.begin = expr.exprDate[0];
         expr.end = expr.exprDate[1];
       });
     }
-  },
-  { deep: true }
+  }
 );
 // 删除工作经历
 const delEmpExpr = () => {
@@ -218,19 +252,46 @@ const delEmpExpr = () => {
     exprDate: [],
   });
 };
+const save = async () => {
+  // 表单校验
+  if (!FormRef.value) return;
+  FormRef.value.validate(async (valid) => {
+    //表示是否校验通过,true则通过，false不通过
+
+    let result;
+
+    if (valid) {
+      result = await addEmpApi(employee.value);
+      if (result.code) {
+        //成功
+        // 提示信息
+        ElMessage.success("添加成功");
+        //关闭对话框
+        dialogVisible.value = false;
+        //查询数据
+        search();
+      } else {
+        //失败
+        // 操作失败会有失败信息
+        ElMessage.error(result.msg);
+      }
+    } else {
+      ElMessage.error("表单校验不通过");
+    }
+  });
+};
 </script>
 
 <template>
   <!-- 新增员工对话框(修改和新增都要用) -->
   <!-- form表单和dialog -->
   <el-dialog v-model="dialogVisible" :title="dialogTitle">
-    {{ employee }}
-    <el-form :model="employee" label-width="80px">
+    <el-form :model="employee" label-width="80px" :rules="rules" ref="FormRef">
       <!-- 基本信息 -->
       <!-- 第一行 -->
       <el-row :gutter="20">
         <el-col :span="12">
-          <el-form-item label="用户名">
+          <el-form-item label="用户名" prop="username">
             <el-input
               v-model="employee.username"
               placeholder="请输入员工用户名，2-20个字"
@@ -239,7 +300,7 @@ const delEmpExpr = () => {
         </el-col>
 
         <el-col :span="12">
-          <el-form-item label="姓名">
+          <el-form-item label="姓名" prop="name">
             <el-input
               v-model="employee.name"
               placeholder="请输入员工姓名，2-10个字"
@@ -251,7 +312,7 @@ const delEmpExpr = () => {
       <!-- 第二行 -->
       <el-row :gutter="20">
         <el-col :span="12">
-          <el-form-item label="性别">
+          <el-form-item label="性别" prop="gender">
             <el-select
               v-model="employee.gender"
               placeholder="请选择性别"
@@ -268,7 +329,7 @@ const delEmpExpr = () => {
         </el-col>
 
         <el-col :span="12">
-          <el-form-item label="手机号">
+          <el-form-item label="手机号" prop="gender">
             <el-input v-model="employee.phone" placeholder="请输入员工手机号"></el-input>
           </el-form-item>
         </el-col>
@@ -401,7 +462,7 @@ const delEmpExpr = () => {
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="">保存</el-button>
+        <el-button type="primary" @click="save">保存</el-button>
       </span>
     </template>
   </el-dialog>
