@@ -35,9 +35,9 @@
     <!--    <select id="queryPages" resultType="cloud.hexiaolei.webaiproject.pojo.Emp">-->
     <!--        select e.*,d.name deptName from emp e left join dept d on e.dept_id = d.id order by e.update_time limit #{start},#{pageSize};-->
     <!--    </select>-->
-    <select id="queryPages" resultType="cloud.hexiaolei.webaiproject.pojo.Emp">
+    <select id="queryPages" resultMap="empResultMap">
 
-        select e.*,d.name deptName from emp e left join dept d on e.dept_id = d.id
+        select e.*,d.name deptName,ee.id ee_id,ee.job ee_job,ee.company ee_company,ee.end ee_end ,ee.emp_id ee_empId from emp e left join dept d  on e.dept_id = d.id left join emp_expr ee on e.id = ee.emp_id
         # 动态sql配置,where标签用来设置and条件是否添加到最后的sql里面,if也是判断如果有这个参数就添加到最后的sql里面
         <where>
             <if test="name != null and name != ''">
@@ -52,6 +52,7 @@
         </where>
         order by e.update_time desc
     </select>
+
     <!--    根据Id查询员工基本信息和工作经历信息-->
     <select id="getInfo" resultMap="empResultMap">
         select e.*,
@@ -89,6 +90,7 @@
         <result column="image" property="image"/>
         <result column="entry_date" property="entryDate"/>
         <result column="dept_id" property="deptId"/>
+        <result column="deptName" property="deptName" />
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
         <!--        封装exprList-->

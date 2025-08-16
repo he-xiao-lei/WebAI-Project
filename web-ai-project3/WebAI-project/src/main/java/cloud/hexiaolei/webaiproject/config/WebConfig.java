@@ -34,14 +34,16 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(tokenInterceptor)
                 .excludePathPatterns("/**");//设置拦截路径的同时可以设置不要拦截的路径
     }
-
-    @Override
-    //配置跨域访问
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:5173")
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*")
-                .allowCredentials(true);
-    }
 }
+
+// 路过前端不配置代理，后端就需要配置CORS
+//    @Override
+//    //配置跨域访问
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**") // Allow CORS for all endpoints
+//                .allowedOrigins("http://localhost:5173") // Allow requests from frontend origin
+//                .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow specific HTTP methods
+//                .allowedHeaders("*") // Allow all headers
+//                .allowCredentials(true); // Allow credentials (e.g., cookies, authorization headers)
+//    }
+//}
