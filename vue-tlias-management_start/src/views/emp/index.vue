@@ -1,10 +1,12 @@
 <script setup>
 import { onMounted } from "vue";
-import { queryEmpApi } from "@/api/emp";
+import { ElMessageBox } from "element-plus";
+import { queryEmpApi, queryEmpByIdApi, editEmpApi, deleteEmpByIdApi } from "@/api/emp";
 import { ref, watch } from "vue";
 import { queryDeptApi } from "@/api/dept";
 import { ElMessage } from "element-plus";
 import { addEmpApi } from "@/api/emp";
+
 //元数据
 //职位列表数据
 const jobs = ref([
@@ -110,11 +112,82 @@ const search = async () => {
     total.value = result.data.total;
   }
 };
+// 查询回显
+const edit = async (id) => {
+  const result = await queryEmpByIdApi(id);
+
+  if (result.code) {
+    dialogTitle.value = "修改员工";
+    dialogVisible.value = true;
+    employee.value = result.data;
+    // 因为前端有exprDate这个值但是后端传过来没有，所以要重新赋值
+    let exprList = employee.value.exprList;
+    if (exprList.length > 0 && exprList) {
+      exprList.forEach((item) => {
+        item.exprDate = [item.begin, item.end];
+      });
+    }
+  }
+  // 校验规则清除区域
+};
+
 // 清空
 const clear = () => {
   searchEmp.value = { name: "", gender: "", date: [], begin: "", end: "" };
   search();
 };
+// 删除员工
+const deleteEmps = async (ids) => {
+  ElMessageBox.confirm("确认删除该员工吗", "Warning", {
+    confirmButtonText: "确认",
+    cancelButtonText: "取消",
+    type: "warning",
+  })
+    .then(async () => {
+      const result = await deleteEmpByIdApi(ids);
+      if (result.code) {
+        ElMessage.success("删除成功");
+        search();
+      } else {
+        ElMessage.error(result.message);
+      }
+    })
+    .catch(() => {
+      ElMessage.success("您已取消删除");
+    });
+};
+// 批量删除的员工id存储数组
+const empIds = ref([]);
+const handleSelectionChange = (ids) => {
+  empIds.value = ids.map((item) => {
+    return item.id;
+  });
+};
+// 批量删除方法
+const deleteEmpsByIds = async () => {
+  ElMessageBox.confirm("确认删除选中的员工吗", "Warning", {
+    confirmButtonText: "确认",
+    cancelButtonText: "取消",
+    type: "warning",
+  })
+    .then(async () => {
+      if (empIds.value && empIds.value.length > 0) {
+        const result = await deleteEmpByIdApi(empIds.value);
+        if (result.code) {
+          ElMessage.success("删除成功");
+          search();
+        } else {
+          ElMessage.error(result.message);
+        }
+      } else {
+        ElMessage.error("你没有选择任何员工");
+      }
+    })
+    .catch(() => {
+      ElMessage.success("您已取消删除");
+    });
+};
+
 onMounted(() => {
   search();
   queryDepts();
@@ -261,11 +334,16 @@ const save = async () => {
     let result;
 
     if (valid) {
-      result = await addEmpApi(employee.value);
+      if (employee.value.id) {
+        //判断id是否存在，后端返回的
+        result = await editEmpApi(employee.value);
+      } else {
+        result = await addEmpApi(employee.value);
+      }
       if (result.code) {
         //成功
         // 提示信息
-        ElMessage.success("添加成功");
+        ElMessage.success("操作成功");
         //关闭对话框
         dialogVisible.value = false;
         //查询数据
@@ -280,6 +358,7 @@ const save = async () => {
     }
   });
 };
+// 复选框发生变化时触发
 </script>
 
 <template>
@@ -469,7 +548,6 @@ const save = async () => {
   <h1>员工管理</h1>
   <!-- 搜索框 -->
   <div class="container">
-    <b>{{ searchEmp }}</b>
     <el-form :inline="true" :model="searchEmp" class="demo-form-inline">
       <el-form-item label="姓名">
         <el-input v-model="searchEmp.name" placeholder="请输入员工姓名" clearable />
@@ -502,11 +580,16 @@ const save = async () => {
   <!-- 功能按钮 -->
   <div class="container">
     <el-button type="primary" @click="addEmp">+ 新增员工</el-button>
-    <el-button type="danger" @click="deleteEmps">- 批量删除</el-button>
+    <el-button type="danger" @click="deleteEmpsByIds">- 批量删除</el-button>
   </div>
   <!-- 表格 -->
   <div class="container">
-    <el-table :data="empList" border style="width: auto">
+    <el-table
+      :data="empList"
+      border
+      style="width: auto"
+      @selection-change="handleSelectionChange"
+    >
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column prop="name" label="名字" width="120" align="center" />
       <el-table-column label="性别" width="120" align="center">
@@ -540,10 +623,10 @@ const save = async () => {
       />
       <el-table-column label="操作" width="180" align="center">
         <template #default="scope">
-          <el-button type="primary" size="small" @click=""
+          <el-button type="primary" size="small" @click="edit(scope.row.id)"
             ><el-icon><edit /></el-icon>编辑</el-button
           >
-          <el-button type="danger" size="small" @click=""
+          <el-button type="danger" size="small" @click="deleteEmps(scope.row.id)"
             ><el-icon><delete /></el-icon>删除</el-button
           >
         </template>

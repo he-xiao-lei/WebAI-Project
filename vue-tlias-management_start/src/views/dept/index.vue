@@ -10,7 +10,7 @@ import {
 } from "@/api/dept";
 import { ElMessage, ElMessageBox } from "element-plus";
 
-// 发送请求获取部门列表
+// 发送请求获取门列表
 const search = async () => {
   const result = await queryDeptApi();
   deptList.value = result.data;

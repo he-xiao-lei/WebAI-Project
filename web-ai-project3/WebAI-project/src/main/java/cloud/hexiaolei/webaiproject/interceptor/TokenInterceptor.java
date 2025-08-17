@@ -16,13 +16,13 @@ public class TokenInterceptor implements HandlerInterceptor {//需要实现handl
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String requestURI = request.getRequestURI();
-        log.info("请求URI：{}", requestURI);
+//        String requestURI = request.getRequestURI();
+//        log.info("请求URI：{}", requestURI);
         //在WebConfig设置不要拦截的路径后就不用这部分了
-        if (requestURI.contains("/login")) {
-            log.info("登录请求,放行");
-            return true;
-        }
+//        if (requestURI.contains("/login")) {
+//            log.info("登录请求,放行");
+//            return true;
+//        }
         String token = request.getHeader("token");
 
         if (token == null || token.isEmpty()) {

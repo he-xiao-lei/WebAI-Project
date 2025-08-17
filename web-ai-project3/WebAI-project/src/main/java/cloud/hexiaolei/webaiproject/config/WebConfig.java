@@ -32,7 +32,7 @@ public class WebConfig implements WebMvcConfigurer {
     //添加拦截器
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(tokenInterceptor)
-                .excludePathPatterns("/**");//设置拦截路径的同时可以设置不要拦截的路径
+                .excludePathPatterns("/login");//设置拦截路径的同时可以设置不要拦截的路径
     }
 }
 
