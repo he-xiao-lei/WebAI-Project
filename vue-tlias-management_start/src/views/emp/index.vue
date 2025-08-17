@@ -130,6 +130,10 @@ const edit = async (id) => {
   }
   // 校验规则清除区域
 };
+const token = ref();
+const getToken = () => {
+  token.value = localStorage.getItem("token");
+};
 
 // 清空
 const clear = () => {
@@ -191,6 +195,7 @@ const deleteEmpsByIds = async () => {
 onMounted(() => {
   search();
   queryDepts();
+  getToken();
 });
 const queryDepts = async () => {
   const result = await queryDeptApi();
@@ -292,6 +297,7 @@ const beforeAvatarUpload = (rawFile) => {
   return true;
 };
 // 添加工作经历
+
 const addExpr = () => {
   employee.value.exprList.push({
     company: "",
@@ -478,6 +484,7 @@ const save = async () => {
             <el-upload
               class="avatar-uploader"
               action="/api/upload"
+              :headers="{ token: token }"
               :show-file-list="false"
               :on-success="handleAvatarSuccess"
               :before-upload="beforeAvatarUpload"

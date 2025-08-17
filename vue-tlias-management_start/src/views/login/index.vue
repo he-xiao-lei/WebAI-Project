@@ -1,8 +1,35 @@
 <script setup>
-  import { ref } from 'vue'
-  
-  let loginForm = ref({username:'', password:''})
-  
+import { ref } from "vue";
+import { loginApi } from "@/api/login";
+import { ElMessage } from "element-plus";
+import { useRouter } from "vue-router";
+
+let loginForm = ref({ username: "", password: "" });
+// 添加注释
+// 获取当前界面route示例
+const router = useRouter();
+// 登录
+const login = async () => {
+  const result = await loginApi(loginForm.value);
+  if (result.code) {
+    //提示成功
+    ElMessage.success("登录成功");
+    // 存储token
+    // console.log(result.data.token);
+    // 将对象转化为JSON字符串
+    localStorage.setItem("token", result.data.token);
+
+    // 跳转首页
+    router.push("/index");
+  } else {
+    ElMessage.error(result.message);
+  }
+};
+
+// 重置
+const reset = () => {
+  loginForm.value = { username: "", password: "" };
+};
 </script>
 
 <template>
@@ -15,12 +42,16 @@
         </el-form-item>
 
         <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model="loginForm.password" placeholder="请输入密码"></el-input>
+          <el-input
+            type="password"
+            v-model="loginForm.password"
+            placeholder="请输入密码"
+          ></el-input>
         </el-form-item>
 
         <el-form-item>
-          <el-button class="button" type="primary" @click="">登 录</el-button>
-          <el-button class="button" type="info" @click="">重 置</el-button>
+          <el-button class="button" type="primary" @click="login">登 录</el-button>
+          <el-button class="button" type="info" @click="reset">重 置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -31,7 +62,7 @@
 #container {
   padding: 10%;
   height: 410px;
-  background-image: url('../../assets/bg1.jpg');
+  background-image: url("../../assets/bg1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -48,7 +79,7 @@
 
 .title {
   font-size: 30px;
-  font-family: '楷体';
+  font-family: "楷体";
   text-align: center;
   margin-bottom: 30px;
   font-weight: bold;
