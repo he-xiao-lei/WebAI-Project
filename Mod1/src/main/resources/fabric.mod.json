@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "mod1",
+  "version": "${version}",
+  "name": "Mod1",
+  "description": "一个小小的开发",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/mod1/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "cloud.hexiaolei.mod1.client.Mod1DataGenerator"
+    ],
+    "client": [
+      "cloud.hexiaolei.mod1.client.Mod1Client"
+    ],
+    "main": [
+      "cloud.hexiaolei.mod1.Mod1"
+    ]
+  },
+  "mixins": [
+    "mod1.mixins.json",
+    {
+      "config": "mod1.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

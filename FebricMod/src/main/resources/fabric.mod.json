@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "febricmod",
+  "version": "${version}",
+  "name": "FebricMod",
+  "description": "一个小小的开发",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/febricmod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "cloud.hexiaolei.febricmod.client.FebricmodDataGenerator"
+    ],
+    "client": [
+      "cloud.hexiaolei.febricmod.client.FebricmodClient"
+    ],
+    "main": [
+      "cloud.hexiaolei.febricmod.Febricmod"
+    ]
+  },
+  "mixins": [
+    "febricmod.mixins.json",
+    {
+      "config": "febricmod.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
